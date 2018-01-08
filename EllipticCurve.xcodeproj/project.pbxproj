@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F0350E9FD7F9555B3AC08C3 /* FiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0357CE5E09C64F23F84CEA /* FiniteField.swift */; };
-		5F0354B0D6F2B61B444D70D9 /* FiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0357CE5E09C64F23F84CEA /* FiniteField.swift */; };
-		631EA59F2003AA8000DA11AD /* FiniteField+secp256k1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EA59E2003AA8000DA11AD /* FiniteField+secp256k1.swift */; };
-		631EA5A02003AA8000DA11AD /* FiniteField+secp256k1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631EA59E2003AA8000DA11AD /* FiniteField+secp256k1.swift */; };
-		635B907A2003C35000E663A3 /* FiniteFieldInteger+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */; };
+		5F0350E9FD7F9555B3AC08C3 /* ElementOfFiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0357CE5E09C64F23F84CEA /* ElementOfFiniteField.swift */; };
+		5F0354B0D6F2B61B444D70D9 /* ElementOfFiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0357CE5E09C64F23F84CEA /* ElementOfFiniteField.swift */; };
+		6315FCF12004036600707738 /* PointOnEllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315FCF02004036600707738 /* PointOnEllipticCurve.swift */; };
+		6315FCF22004036600707738 /* PointOnEllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315FCF02004036600707738 /* PointOnEllipticCurve.swift */; };
 		635B907B2003C35000E663A3 /* FiniteFieldInteger+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */; };
 		6399645020030496007231D9 /* FiniteFieldInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AB7F9A1FFE7848002C2F4F /* FiniteFieldInteger.swift */; };
 		6399645120030496007231D9 /* EllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636CD5EB200289E20018354F /* EllipticCurve.swift */; };
@@ -22,6 +21,7 @@
 		6399648020030FC6007231D9 /* UInt256.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6399647F20030FC6007231D9 /* UInt256.framework */; };
 		639964832003102C007231D9 /* UInt256.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 639964822003102C007231D9 /* UInt256.framework.dSYM */; };
 		6399648820031432007231D9 /* EllipticCurve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6399644820030486007231D9 /* EllipticCurve.framework */; };
+		63D049982003EF94005D8765 /* FiniteFieldInteger+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */; };
 		63D3EC0C200317E1004839AC /* UInt256.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63AB7FC71FFEB7DD002C2F4F /* UInt256.framework */; };
 		63D3EC0D200317F6004839AC /* UInt256.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63AB7FC71FFEB7DD002C2F4F /* UInt256.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -60,8 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5F0357CE5E09C64F23F84CEA /* FiniteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiniteField.swift; sourceTree = "<group>"; };
-		631EA59E2003AA8000DA11AD /* FiniteField+secp256k1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FiniteField+secp256k1.swift"; sourceTree = "<group>"; };
+		5F0357CE5E09C64F23F84CEA /* ElementOfFiniteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementOfFiniteField.swift; sourceTree = "<group>"; };
+		6315FCF02004036600707738 /* PointOnEllipticCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOnEllipticCurve.swift; sourceTree = "<group>"; };
 		635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FiniteFieldInteger+Default.swift"; sourceTree = "<group>"; };
 		636CD5EB200289E20018354F /* EllipticCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticCurve.swift; sourceTree = "<group>"; };
 		636CD5F32002C04D0018354F /* FiniteFieldIntegerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteFieldIntegerTests.swift; sourceTree = "<group>"; };
@@ -106,24 +106,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		631EA59D2003AA5600DA11AD /* FiniteField */ = {
-			isa = PBXGroup;
-			children = (
-				5F0357CE5E09C64F23F84CEA /* FiniteField.swift */,
-				631EA59E2003AA8000DA11AD /* FiniteField+secp256k1.swift */,
-			);
-			path = FiniteField;
-			sourceTree = "<group>";
-		};
-		635B90782003C30E00E663A3 /* FiniteFieldInteger */ = {
-			isa = PBXGroup;
-			children = (
-				63AB7F9A1FFE7848002C2F4F /* FiniteFieldInteger.swift */,
-				635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */,
-			);
-			path = FiniteFieldInteger;
-			sourceTree = "<group>";
-		};
 		636CD5F22002C04D0018354F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,11 +156,13 @@
 		63DD8C3F1FFDA93800BAB4B2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				635B90782003C30E00E663A3 /* FiniteFieldInteger */,
-				631EA59D2003AA5600DA11AD /* FiniteField */,
+				5F0357CE5E09C64F23F84CEA /* ElementOfFiniteField.swift */,
+				63AB7F9A1FFE7848002C2F4F /* FiniteFieldInteger.swift */,
+				635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */,
 				63DD8C381FFD925000BAB4B2 /* Info.plist */,
 				63DD8C371FFD925000BAB4B2 /* EllipticCurve.h */,
 				636CD5EB200289E20018354F /* EllipticCurve.swift */,
+				6315FCF02004036600707738 /* PointOnEllipticCurve.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -350,11 +334,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				631EA59F2003AA8000DA11AD /* FiniteField+secp256k1.swift in Sources */,
-				635B907A2003C35000E663A3 /* FiniteFieldInteger+Default.swift in Sources */,
+				63D049982003EF94005D8765 /* FiniteFieldInteger+Default.swift in Sources */,
 				6399645120030496007231D9 /* EllipticCurve.swift in Sources */,
+				6315FCF12004036600707738 /* PointOnEllipticCurve.swift in Sources */,
 				6399645020030496007231D9 /* FiniteFieldInteger.swift in Sources */,
-				5F0350E9FD7F9555B3AC08C3 /* FiniteField.swift in Sources */,
+				5F0350E9FD7F9555B3AC08C3 /* ElementOfFiniteField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,11 +354,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				631EA5A02003AA8000DA11AD /* FiniteField+secp256k1.swift in Sources */,
 				6399647C20030F8C007231D9 /* EllipticCurve.swift in Sources */,
 				6399647B20030F8C007231D9 /* FiniteFieldInteger.swift in Sources */,
+				6315FCF22004036600707738 /* PointOnEllipticCurve.swift in Sources */,
 				635B907B2003C35000E663A3 /* FiniteFieldInteger+Default.swift in Sources */,
-				5F0354B0D6F2B61B444D70D9 /* FiniteField.swift in Sources */,
+				5F0354B0D6F2B61B444D70D9 /* ElementOfFiniteField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

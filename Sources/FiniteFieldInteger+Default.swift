@@ -1,7 +1,6 @@
 //
 
 import Foundation
-import UInt256
 
 extension FiniteFieldInteger {
     public typealias Multiplier = Self.Type
@@ -13,8 +12,12 @@ extension FiniteFieldInteger {
         }
     }
 
+    public var description: String {
+        return "\(Self.Type.self): \(value) of F_\(Self.Characteristic)"
+    }
+
     public init(integerLiteral value: Int) {
-        self.init(UInt256(value))
+        self.init(ValueType(value))
     }
 
     public static func +(lhs: Self, rhs: Self) -> Self {
@@ -35,7 +38,7 @@ extension FiniteFieldInteger {
         var (value, overflow) = lhs.value.subtractingReportingOverflow(rhs.value)
         
         if overflow {
-            value += Self.Characteristic
+            (value, overflow) = value.addingReportingOverflow(Self.Characteristic)
         }
         
         return Self(value % Self.Characteristic)
@@ -66,11 +69,11 @@ extension FiniteFieldInteger {
     public static func ^(lhs: Self, rhs: Self) -> Self {
         /// this is the useful exponent, due to
         /// fermat's little thereom: base^(p-1) % p == 1
-        var exponent: UInt256 = rhs.value % (Self.Characteristic - 1)
+        var exponent: ValueType = rhs.value % (Self.Characteristic - 1)
         
-        var currentExp: UInt256 = 1
+        var currentExp: ValueType = 1
         var currentVal: Self = lhs
-        var trail: [(UInt256, Self)] = [(currentExp, currentVal)]
+        var trail: [(ValueType, Self)] = [(currentExp, currentVal)]
         
         /// construct a trail leading to the highest
         /// non-zero bit of exponent
