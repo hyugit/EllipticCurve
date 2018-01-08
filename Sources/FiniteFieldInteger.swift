@@ -1,13 +1,12 @@
 //
 
 import Foundation
-@_exported import UInt256
 
-public protocol FiniteFieldInteger: FiniteField, ExpressibleByIntegerLiteral {
+public protocol FiniteFieldInteger: ElementOfFiniteField, ExpressibleByIntegerLiteral {
     
-    var value: UInt256 { get set }
+    var value: ValueType { get set }
 
-    init(_ source: UInt256)
+    init(_ source: ValueType)
 
     static prefix func -(lhs: Self) -> Self
 
@@ -24,6 +23,4 @@ public protocol FiniteFieldInteger: FiniteField, ExpressibleByIntegerLiteral {
     ///   - rhs: FiniteFieldInteger, the exponent
     /// - Returns: FiniteFieldInteger, the result of the power
     static func ^(lhs: Self, rhs: Self) -> Self
-
-    static func ==(lhs: Self, rhs: Self) -> Bool
 }

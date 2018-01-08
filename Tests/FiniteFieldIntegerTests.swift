@@ -4,21 +4,19 @@ import XCTest
 @testable import EllipticCurve
 
 // for test purposes, use a small prime number
-let p: UInt256 = 31
+let p: UInt8 = 31
 
 struct FFInt: FiniteFieldInteger {
+    typealias ValueType = UInt8
     typealias Multiplier = FFInt
 
-    var value: UInt256
-    
-    init(_ source: UInt256) {
-        value = source % p
-    }
+    static var Characteristic: UInt8 = p
+    static var Order: UInt8 = p // all 0..<p are included
 
-    public static var Characteristic: UInt256 {
-        get {
-            return UInt256(p)
-        }
+    var value: UInt8
+    
+    init(_ source: UInt8) {
+        value = source % p
     }
 }
 
