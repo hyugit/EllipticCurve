@@ -3,9 +3,9 @@
 import Foundation
 import UInt256
 
-enum CommonCurves {
+public enum EllipticCurve {
     case secp256k1
-    
+
     /// The characteristic of the finite field domain that secp256k1 uses
     public var p: UInt256 {
         switch self {
@@ -13,19 +13,19 @@ enum CommonCurves {
             return UInt256([UInt64.max, UInt64.max, UInt64.max, 0xfffffffefffffc2f])
         }
     }
-    
+
     public var a: UInt256 {
         switch self {
         case .secp256k1: return UInt256(0)
         }
     }
-    
+
     public var b: UInt256 {
         switch self {
         case .secp256k1: return UInt256(7)
         }
     }
-    
+
     public var G: (x: UInt256, y: UInt256) {
         switch self {
         case .secp256k1:
@@ -45,14 +45,14 @@ enum CommonCurves {
             )
         }
     }
-    
+
     public var n: UInt256 {
         switch self {
         case .secp256k1:
             return UInt256([UInt64.max, UInt64.max - 1, 0xbaaedce6af48a03b, 0xbfd25e8cd0364141])
         }
     }
-    
+
     public var h: UInt256 {
         switch self {
         case .secp256k1: return UInt256(1)
