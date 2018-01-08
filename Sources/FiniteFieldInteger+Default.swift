@@ -49,12 +49,17 @@ extension FiniteFieldInteger {
         let (_, remainder) = Self.Characteristic.dividingFullWidth((high: high, low: low))
         return Self(remainder)
     }
-    
+
     public static func /(lhs: Self, rhs: Self) -> Self {
-        let quotient = lhs.value / rhs.value
-        return Self(quotient)
+        /// because of fermat's little thereom: base^(p-1) % p == 1
+        /// division becomes multiplication:
+        /// rhs^(p-1) == 1 -> 1/rhs = rhs^(p-2)
+        /// lhs/rhs = lhs * 1/rhs = lhs * rhs^(p-2)
+        let exp = rhs ^ Self(Self.Characteristic - 2)
+        let result = lhs * exp
+        return result
     }
-    
+
     public static func %(lhs: Self, rhs: Self) -> Self {
         let remainder = lhs.value % rhs.value
         return Self(remainder)
@@ -67,28 +72,27 @@ extension FiniteFieldInteger {
     ///   - rhs: FiniteFieldInteger, the exponent
     /// - Returns: FiniteFieldInteger, the result of the power
     public static func ^(lhs: Self, rhs: Self) -> Self {
-        /// this is the useful exponent, due to
+        /// this is the actual useful exponent, because of
         /// fermat's little thereom: base^(p-1) % p == 1
         var exponent: ValueType = rhs.value % (Self.Characteristic - 1)
-        
-        var currentExp: ValueType = 1
+
         var currentVal: Self = lhs
-        var trail: [(ValueType, Self)] = [(currentExp, currentVal)]
-        
+        var trail: [Self] = []
+
         /// construct a trail leading to the highest
         /// non-zero bit of exponent
-        while exponent - currentExp >= currentExp {
-            currentExp <<= 1
+        let bitLength = exponent.bitWidth - exponent.leadingZeroBitCount
+        for _ in 0..<bitLength {
+            trail.append(currentVal)
             currentVal = currentVal * currentVal
-            trail.append((currentExp, currentVal))
         }
 
         var result = Self(1)
-        for (exp, val) in trail.reversed() {
-            if exponent >= exp {
-                exponent -= exp
+        for (index, val) in trail.enumerated().reversed() {
+            if (exponent >> index) & 0b1 == 1 {
+                result = result * val
+                exponent -= 0b1 << index
             }
-            result = result * val
         }
         
         return result

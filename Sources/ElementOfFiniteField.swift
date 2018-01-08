@@ -11,7 +11,6 @@ public protocol ElementOfFiniteField: Equatable, CustomStringConvertible {
     static var Order: ValueType { get }
     static var Zero: Self { get }
 
-    static func ==(lhs: Self, rhs: Self) -> Bool
     static func +(lhs: Self, rhs: Self) -> Self
     static func *(lhs: Multiplier, rhs: Self) -> Self
 }

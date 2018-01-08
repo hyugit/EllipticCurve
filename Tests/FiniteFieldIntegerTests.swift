@@ -69,11 +69,24 @@ class FiniteFieldIntegerTests: XCTestCase {
         let c = a * b
         XCTAssertEqual(c.value, 22)
     }
-    
+
+    func testDivision() {
+        let a = FFInt(3)
+        let b = FFInt(24)
+        XCTAssertEqual(4 as FFInt, a / b)
+    }
+
     func testPow() {
         let a = FFInt(17)
         let b = FFInt(3)
         let c = a ^ b
         XCTAssertEqual(c.value, 15)
+    }
+
+    func testPow1() {
+        let a = FFInt(17)
+        let b = FFInt(28)
+        let c = a ^ b
+        XCTAssertEqual(c, 28 as FFInt)
     }
 }
