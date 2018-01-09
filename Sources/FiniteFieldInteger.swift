@@ -2,19 +2,12 @@
 
 import Foundation
 
-public protocol FiniteFieldInteger: ElementOfFiniteField, ExpressibleByIntegerLiteral {
-    
-    var value: ValueType { get set }
+public protocol FiniteFieldInteger: FiniteField, Numeric, Comparable {
 
-    init(_ source: ValueType)
+    var value: Element { get set }
 
-    static prefix func -(lhs: Self) -> Self
-
-    static func +(lhs: Self, rhs: Self) -> Self
-    static func -(lhs: Self, rhs: Self) -> Self
-    static func *(lhs: Self, rhs: Self) -> Self
-    static func /(lhs: Self, rhs: Self) -> Self
-    static func %(lhs: Self, rhs: Self) -> Self
+    init(withValue source: Element)
+    init(_ source: Element)
 
     /// POW function currently overloading the XOR operator
     ///
