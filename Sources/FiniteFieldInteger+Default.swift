@@ -102,20 +102,13 @@ extension FiniteFieldInteger {
         return lhs.value > rhs.value
     }
 
-    public static func <=(lhs: Self, rhs: Self) -> Bool {
-        return lhs.value <= rhs.value
-    }
-
-    public static func >=(lhs: Self, rhs: Self) -> Bool {
-        return lhs.value >= rhs.value
-    }
     /// POW function overloading the XOR operator currently
     ///
     /// - Parameters:
     ///   - lhs: FiniteFieldInteger, the base number
     ///   - rhs: FiniteFieldInteger, the exponent
     /// - Returns: FiniteFieldInteger, the result of the power
-    public static func ^(lhs: Self, rhs: Self) -> Self {
+    static func ^(lhs: Self, rhs: Self) -> Self {
         /// this is the actual useful exponent, because of
         /// fermat's little thereom: base^(p-1) % p == 1
         var exponent: Element = rhs.value % (Self.Characteristic - 1)
