@@ -7,15 +7,15 @@ import XCTest
 let p: UInt8 = 31
 
 struct FFInt: FiniteFieldInteger {
-    typealias ValueType = UInt8
     typealias Multiplier = FFInt
+    typealias Element = UInt8
 
     static var Characteristic: UInt8 = p
     static var Order: UInt8 = p // all 0..<p are included
 
     var value: UInt8
-    
-    init(_ source: UInt8) {
+
+    init(withValue source: UInt8) {
         value = source % p
     }
 }
@@ -27,6 +27,10 @@ class FiniteFieldIntegerTests: XCTestCase {
         let c = FFInt(1)
         XCTAssertEqual(a, b)
         XCTAssertEqual(b, c)
+    }
+
+    func testProperties() {
+        // TODO: test common properties
     }
 
     func testAddition() {
@@ -57,12 +61,6 @@ class FiniteFieldIntegerTests: XCTestCase {
         XCTAssertEqual(c.value, 16)
     }
 
-    func testUnarySubtraction() {
-        let a = FFInt(14)
-        let c = -a
-        XCTAssertEqual(c.value, 17)
-    }
-    
     func testMultiplication() {
         let a = FFInt(24)
         let b = FFInt(19)

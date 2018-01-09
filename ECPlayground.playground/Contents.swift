@@ -6,15 +6,15 @@ import Foundation
 let p: UInt8 = 223
 
 struct FFInt: FiniteFieldInteger {
-    typealias ValueType = UInt8
+    typealias Element = UInt8
     typealias Multiplier = FFInt
 
-    static var Characteristic: ValueType = p
-    static var Order: ValueType = p // all 0..<p are included
+    static var Characteristic: Element = p
+    static var Order: Element = p // all 0..<p are included
 
-    var value: ValueType
+    var value: Element
 
-    init(_ source: ValueType) {
+    init(_ source: Element) {
         value = source % p
     }
 }

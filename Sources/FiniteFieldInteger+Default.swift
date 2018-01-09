@@ -5,11 +5,25 @@ import Foundation
 extension FiniteFieldInteger {
     public typealias Multiplier = Self.Type
     public typealias IntegerLiteralType = Int
+    public typealias Magnitude = Self.Type
 
     public static var Zero: Self {
         get {
-            return Self(0)
+            return Self(withValue: 0)
         }
+    }
+
+    init(_ source: Element) {
+        self.init(withValue: source)
+    }
+
+    init?<T>(exactly source: T) where T : BinaryInteger {
+        let src = Element(exactly: source)
+        self.init(withValue: src!)
+    }
+
+    var magnitude: Self {
+        return Self(withValue: value)
     }
 
     public var description: String {
@@ -17,7 +31,7 @@ extension FiniteFieldInteger {
     }
 
     public init(integerLiteral value: Int) {
-        self.init(ValueType(value))
+        self.init(withValue: Element(value))
     }
 
     public static func +(lhs: Self, rhs: Self) -> Self {
@@ -27,13 +41,13 @@ extension FiniteFieldInteger {
             value -= Self.Characteristic
         }
 
-        return Self(value)
+        return Self(withValue: value)
     }
-    
-    public static prefix func -(lhs: Self) -> Self {
-        return Self.Zero - lhs
+
+    public static func +=(lhs: inout Self, rhs: Self) {
+        lhs = lhs + rhs
     }
-    
+
     public static func -(lhs: Self, rhs: Self) -> Self {
         var (value, overflow) = lhs.value.subtractingReportingOverflow(rhs.value)
         
@@ -41,13 +55,21 @@ extension FiniteFieldInteger {
             (value, overflow) = value.addingReportingOverflow(Self.Characteristic)
         }
         
-        return Self(value % Self.Characteristic)
+        return Self(withValue: value)
+    }
+
+    public static func -=(lhs: inout Self, rhs: Self) {
+        lhs = lhs - rhs
     }
     
     public static func *(lhs: Self, rhs: Self) -> Self {
         let (high, low) = lhs.value.multipliedFullWidth(by: rhs.value)
         let (_, remainder) = Self.Characteristic.dividingFullWidth((high: high, low: low))
-        return Self(remainder)
+        return Self(withValue: remainder)
+    }
+
+    public static func *=(lhs: inout Self, rhs: Self) {
+        lhs = lhs * rhs
     }
 
     public static func /(lhs: Self, rhs: Self) -> Self {
@@ -55,16 +77,38 @@ extension FiniteFieldInteger {
         /// division becomes multiplication:
         /// rhs^(p-1) == 1 -> 1/rhs = rhs^(p-2)
         /// lhs/rhs = lhs * 1/rhs = lhs * rhs^(p-2)
-        let exp = rhs ^ Self(Self.Characteristic - 2)
+        let exp = rhs ^ Self(withValue: Self.Characteristic - 2)
         let result = lhs * exp
         return result
     }
 
-    public static func %(lhs: Self, rhs: Self) -> Self {
-        let remainder = lhs.value % rhs.value
-        return Self(remainder)
+    public static func /=(lhs: inout Self, rhs: Self) {
+        lhs = lhs / rhs
     }
 
+    public static func %(lhs: Self, rhs: Self) -> Self {
+        return Self(withValue: 0)
+    }
+
+    public static func %=(lhs: inout Self, rhs: Self) {
+        lhs = Self(withValue: 0)
+    }
+
+    public static func <(lhs: Self, rhs: Self) -> Bool {
+        return lhs.value < rhs.value
+    }
+
+    public static func >(lhs: Self, rhs: Self) -> Bool {
+        return lhs.value > rhs.value
+    }
+
+    public static func <=(lhs: Self, rhs: Self) -> Bool {
+        return lhs.value <= rhs.value
+    }
+
+    public static func >=(lhs: Self, rhs: Self) -> Bool {
+        return lhs.value >= rhs.value
+    }
     /// POW function overloading the XOR operator currently
     ///
     /// - Parameters:
@@ -74,7 +118,7 @@ extension FiniteFieldInteger {
     public static func ^(lhs: Self, rhs: Self) -> Self {
         /// this is the actual useful exponent, because of
         /// fermat's little thereom: base^(p-1) % p == 1
-        var exponent: ValueType = rhs.value % (Self.Characteristic - 1)
+        var exponent: Element = rhs.value % (Self.Characteristic - 1)
 
         var currentVal: Self = lhs
         var trail: [Self] = []
@@ -87,7 +131,7 @@ extension FiniteFieldInteger {
             currentVal = currentVal * currentVal
         }
 
-        var result = Self(1)
+        var result = Self(withValue: 1)
         for (index, val) in trail.enumerated().reversed() {
             if (exponent >> index) & 0b1 == 1 {
                 result = result * val
