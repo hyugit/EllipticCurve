@@ -3,7 +3,6 @@
 import Foundation
 
 extension FiniteFieldInteger {
-    public typealias Multiplier = Self.Type
     public typealias IntegerLiteralType = Int
     public typealias Magnitude = Self.Type
 
@@ -61,7 +60,11 @@ extension FiniteFieldInteger {
     public static func -=(lhs: inout Self, rhs: Self) {
         lhs = lhs - rhs
     }
-    
+
+    public static func *<T>(lhs: T, rhs: Self) -> Self where T: Numeric {
+        return (lhs as! Self) * rhs
+    }
+
     public static func *(lhs: Self, rhs: Self) -> Self {
         let (high, low) = lhs.value.multipliedFullWidth(by: rhs.value)
         let (_, remainder) = Self.Characteristic.dividingFullWidth((high: high, low: low))

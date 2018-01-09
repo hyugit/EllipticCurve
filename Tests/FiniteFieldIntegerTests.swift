@@ -7,7 +7,6 @@ import XCTest
 let p: UInt8 = 31
 
 struct FFInt: FiniteFieldInteger {
-    typealias Multiplier = FFInt
     typealias Element = UInt8
 
     static var Characteristic: UInt8 = p
