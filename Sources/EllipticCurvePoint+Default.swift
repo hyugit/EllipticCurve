@@ -4,6 +4,12 @@ import Foundation
 
 extension EllipticCurvePoint {
 
+    public static var Infinity: Self {
+        get {
+            return Self(isInfinity: true)
+        }
+    }
+
     public var isInfinity: Bool {
         get {
             return y == nil
@@ -63,7 +69,28 @@ extension EllipticCurvePoint {
         return Self(x: newX, y: newY)
     }
 
-    public static func *(lhs: NumericType, rhs: Self) -> Self {
-        return Self(isInfinity: true)
+    public static func *<T>(lhs: T, rhs: Self) -> Self where T: FixedWidthInteger {
+        var coefficient = lhs
+        let bitLength = coefficient.bitWidth - coefficient.leadingZeroBitCount
+        var partialCoefficient: T = 1
+        var partialResult: Self = rhs
+        var trail: [(T, Self)] = []
+
+        for _ in 0..<bitLength {
+            trail.append((partialCoefficient, partialResult))
+            partialCoefficient <<= 1
+            partialResult = partialResult + partialResult
+        }
+
+        var result = Self.Infinity
+
+        for (coef, res) in trail.reversed() {
+            if coefficient >= coef {
+                coefficient = coefficient - coef
+                result = result + res
+            }
+        }
+
+        return result
     }
 }
