@@ -12,6 +12,7 @@ public protocol FiniteField: NumericWithDivision, Comparable, CustomStringConver
 
     var value: Element { get set }
 
+    init()
     init(withValue source: Element)
     init(_ source: Element)
 }

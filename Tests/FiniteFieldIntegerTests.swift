@@ -14,8 +14,8 @@ struct FFInt: FiniteField {
 
     var value: UInt8
 
-    init(withValue source: UInt8) {
-        value = source % p
+    init() {
+        value = 0
     }
 }
 

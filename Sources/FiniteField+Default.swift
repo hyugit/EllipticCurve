@@ -12,7 +12,12 @@ extension FiniteField {
         }
     }
 
-    init(_ source: Element) {
+    public init(withValue source: Element) {
+        self.init()
+        self.value = source % Self.Characteristic
+    }
+
+    public init(_ source: Element) {
         self.init(withValue: source)
     }
 
