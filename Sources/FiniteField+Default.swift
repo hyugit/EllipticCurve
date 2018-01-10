@@ -17,8 +17,14 @@ extension FiniteField {
     }
 
     init?<T>(exactly source: T) where T : BinaryInteger {
-        let src = Element(exactly: source)
-        self.init(withValue: src!)
+        if let src = Element(exactly: source) {
+            self.init(withValue: src)
+        }
+        return nil
+    }
+
+    public init(integerLiteral: Int) {
+        self.init(withValue: Element(integerLiteral))
     }
 
     var magnitude: Self {
@@ -27,10 +33,6 @@ extension FiniteField {
 
     public var description: String {
         return "\(Self.Type.self): \(value) of F_\(Self.Characteristic)"
-    }
-
-    public init(integerLiteral value: Int) {
-        self.init(withValue: Element(value))
     }
 
     public static func +(lhs: Self, rhs: Self) -> Self {
