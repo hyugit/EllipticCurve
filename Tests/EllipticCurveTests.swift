@@ -14,14 +14,9 @@ struct ECPoint: EllipticCurve {
     var x: Coordinate
     var y: Coordinate?
 
-    init(x: Coordinate, y: Coordinate) {
-        self.x = x
-        self.y = y
-    }
-
-    init(isInfinity: Bool) {
-        self.x = 0
-        self.y = nil
+    init() {
+        x = 0
+        y = 0
     }
 }
 

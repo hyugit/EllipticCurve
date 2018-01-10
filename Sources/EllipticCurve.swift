@@ -14,6 +14,7 @@ public protocol EllipticCurve: Equatable, CustomStringConvertible {
     static var Infinity: Self { get }
     var isInfinity: Bool { get }
 
+    init()
     init(x: Coordinate, y: Coordinate)
     init(isInfinity: Bool)
 

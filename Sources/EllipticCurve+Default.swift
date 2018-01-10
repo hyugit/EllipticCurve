@@ -18,6 +18,17 @@ extension EllipticCurve {
         }
     }
 
+    public init(x: Coordinate, y: Coordinate) {
+        self.init()
+        self.x = x
+        self.y = y
+    }
+
+    public init(isInfinity: Bool) {
+        self.init(x: 0, y: 0)
+        self.y = nil
+    }
+
     public var description: String {
         guard y != nil else {
             return "Point Infinity"
