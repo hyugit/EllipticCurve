@@ -3,16 +3,18 @@
 import XCTest
 @testable import EllipticCurve
 
-struct ECPoint: EllipticCurvePoint {
-    typealias NumericType = UInt8
+extension Double: NumericWithDivision {}
 
-    static var a: UInt8 = 0
-    static var b: UInt8 = 7
+struct ECPoint: EllipticCurve {
+    typealias Coordinate = Double
 
-    var x: NumericType
-    var y: NumericType?
+    static var a: Coordinate = -1
+    static var b: Coordinate = 1
 
-    init(x xVal: UInt8, y yVal: UInt8) {
+    var x: Coordinate
+    var y: Coordinate?
+
+    init(x xVal: Coordinate, y yVal: Coordinate) {
         x = xVal
         y = yVal
     }
@@ -25,7 +27,9 @@ struct ECPoint: EllipticCurvePoint {
 
 class EllipticCurveTests: XCTestCase {
     func testInit() {
-        let a = ECPoint(x: 1, y: 2)
+        var a = ECPoint(x: 0, y: 1)
+        XCTAssertTrue(ECPoint.verifyEquation(forPoint: a))
+        a = ECPoint(x: 0, y: -1)
         XCTAssertTrue(ECPoint.verifyEquation(forPoint: a))
     }
 }

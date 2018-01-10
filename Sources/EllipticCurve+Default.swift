@@ -2,7 +2,9 @@
 
 import Foundation
 
-extension EllipticCurvePoint {
+// MARK: - Default implementation of Elliptic Curve protocol
+// 
+extension EllipticCurve {
 
     public static var Infinity: Self {
         get {
@@ -28,8 +30,8 @@ extension EllipticCurvePoint {
         if point.y == nil {
             return false
         }
-        let lhs: NumericType = point.y! * point.y!
-        let rhs: NumericType = point.x * point.x * point.x + Self.a * point.x + Self.b
+        let lhs: Coordinate = point.y! * point.y!
+        let rhs: Coordinate = point.x * point.x * point.x + Self.a * point.x + Self.b
 
         return lhs == rhs
     }
@@ -52,10 +54,10 @@ extension EllipticCurvePoint {
             return Self(isInfinity: true)
         }
 
-        let s: NumericType
+        let s: Coordinate
 
         // when two points are the same point on the curve
-        // we need to calculate the tangiential, and use it
+        // we calculate the tangential, and use it
         // as the slope
         if lhs == rhs {
             s = (3 * (lhs.x * lhs.x) + Self.a) / (2 * lhs.y!)
