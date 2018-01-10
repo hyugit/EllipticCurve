@@ -2,7 +2,7 @@
 
 import Foundation
 
-extension FiniteFieldInteger {
+extension FiniteField {
     public typealias IntegerLiteralType = Int
     public typealias Magnitude = Self.Type
 
@@ -61,10 +61,6 @@ extension FiniteFieldInteger {
         lhs = lhs - rhs
     }
 
-    public static func *<T>(lhs: T, rhs: Self) -> Self where T: Numeric {
-        return (lhs as! Self) * rhs
-    }
-
     public static func *(lhs: Self, rhs: Self) -> Self {
         let (high, low) = lhs.value.multipliedFullWidth(by: rhs.value)
         let (_, remainder) = Self.Characteristic.dividingFullWidth((high: high, low: low))
@@ -89,14 +85,6 @@ extension FiniteFieldInteger {
         lhs = lhs / rhs
     }
 
-    public static func %(lhs: Self, rhs: Self) -> Self {
-        return Self(withValue: 0)
-    }
-
-    public static func %=(lhs: inout Self, rhs: Self) {
-        lhs = Self(withValue: 0)
-    }
-
     public static func <(lhs: Self, rhs: Self) -> Bool {
         return lhs.value < rhs.value
     }
@@ -108,9 +96,9 @@ extension FiniteFieldInteger {
     /// POW function overloading the XOR operator currently
     ///
     /// - Parameters:
-    ///   - lhs: FiniteFieldInteger, the base number
-    ///   - rhs: FiniteFieldInteger, the exponent
-    /// - Returns: FiniteFieldInteger, the result of the power
+    ///   - lhs: the base number
+    ///   - rhs: the exponent
+    /// - Returns: the result of the power
     static func ^(lhs: Self, rhs: Self) -> Self {
         /// this is the actual useful exponent, because of
         /// fermat's little thereom: base^(p-1) % p == 1
