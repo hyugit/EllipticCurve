@@ -20,8 +20,8 @@ extension EllipticCurve {
 
     public init(x: Coordinate, y: Coordinate) {
         self.init()
-        self.x = x
-        self.y = y
+        self.x = x as Coordinate
+        self.y = y as Coordinate
     }
 
     public init(isInfinity: Bool) {
@@ -66,12 +66,14 @@ extension EllipticCurve {
         }
 
         let s: Coordinate
+        let two: Coordinate = 2
+        let three: Coordinate = 3
 
         // when two points are the same point on the curve
         // we calculate the tangential, and use it
         // as the slope
         if lhs == rhs {
-            s = (3 * (lhs.x * lhs.x) + Self.a) / (2 * lhs.y!)
+            s = (three * (lhs.x * lhs.x) + Self.a) / (two * lhs.y!)
         } else {
             s = (rhs.y! - lhs.y!) / (rhs.x - lhs.x)
         }
@@ -83,6 +85,10 @@ extension EllipticCurve {
     }
 
     public static func *<T>(lhs: T, rhs: Self) -> Self where T: FixedWidthInteger {
+        guard lhs > 0 else {
+            return Self.Infinity
+        }
+
         var coefficient = lhs
         let bitLength = coefficient.bitWidth - coefficient.leadingZeroBitCount
         var partialCoefficient: T = 1
