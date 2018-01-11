@@ -48,7 +48,7 @@ extension FiniteField {
     }
 
     public var description: String {
-        return "\(Self.Type.self): \(value) of F_\(Self.Characteristic)"
+        return "Element \(value) of F_\(Self.Characteristic)"
     }
 
     public static func +(lhs: Self, rhs: Self) -> Self {

@@ -9,7 +9,6 @@ struct FFInt: FiniteField {
     typealias Element = UInt8
 
     static var Characteristic: Element = p
-    static var Order: Element = p // all 0..<p are included
 
     var value: Element
 
@@ -21,3 +20,24 @@ struct FFInt: FiniteField {
 let a: FFInt = 59
 print(a.description)
 
+struct ECPoint: EllipticCurve {
+    typealias Coordinate = FFInt
+
+    static var a: Coordinate = 2
+    static var b: Coordinate = 7
+
+    var x: Coordinate
+    var y: Coordinate?
+
+    init() {
+        x = 0
+        y = nil
+    }
+}
+
+let b = ECPoint(x: 16, y: 11) // Generator point
+var next = ECPoint.Infinity
+for _ in 0..<212 {
+    next = next + b
+    print(next.description)
+}
