@@ -55,7 +55,7 @@ extension FiniteField {
         var (value, overflow) = lhs.value.addingReportingOverflow(rhs.value)
         
         if overflow || value >= Self.Characteristic {
-            value -= Self.Characteristic
+            (value, overflow) = value.subtractingReportingOverflow(Self.Characteristic)
         }
 
         return Self(withValue: value)
