@@ -51,7 +51,7 @@ extension EllipticCurve {
             onCurve = "NOT "
         }
 
-        return "Point (\(x), \(y!)) \(onCurve)on Curve y^2 = x^3 + \(Self.a)*x + \(Self.b)"
+        return "Point (\(x), \(y!)) \(onCurve)on Curve y^2 = x^3 + (\(Self.a))*x + (\(Self.b))"
     }
 
     public static func verifyEquation(forPoint point: Self) -> Bool {
