@@ -18,6 +18,18 @@ extension EllipticCurve {
         }
     }
 
+    public var isOnCurve: Bool {
+        get {
+            if y == nil {
+                return false
+            }
+            let lhs: Coordinate = y! * y!
+            let rhs: Coordinate = x * x * x + Self.a * x + Self.b
+
+            return lhs == rhs
+        }
+    }
+
     public init(x: Coordinate, y: Coordinate) {
         self.init()
         self.x = x as Coordinate
@@ -34,7 +46,12 @@ extension EllipticCurve {
             return "Point Infinity"
         }
 
-        return "Point (\(x), \(y!)) on Curve y^2 = x^3 + \(Self.a)*x + \(Self.b)"
+        var onCurve: String = ""
+        if !self.isOnCurve {
+            onCurve = "NOT "
+        }
+
+        return "Point (\(x), \(y!)) \(onCurve)on Curve y^2 = x^3 + \(Self.a)*x + \(Self.b)"
     }
 
     public static func verifyEquation(forPoint point: Self) -> Bool {

@@ -25,9 +25,15 @@ class EllipticCurveTests: XCTestCase {
         let a = ECPoint.Infinity
         XCTAssertTrue(a.isInfinity)
         XCTAssertEqual(a.description, "Point Infinity")
+        XCTAssertFalse(a.isOnCurve)
         let b = ECPoint(x: 0, y: 1)
         XCTAssertFalse(b.isInfinity)
+        XCTAssertTrue(b.isOnCurve)
         XCTAssertEqual(b.description, "Point (0.0, 1.0) on Curve y^2 = x^3 + -1.0*x + 1.0")
+        let c = ECPoint(x: 0, y: 2)
+        XCTAssertFalse(c.isInfinity)
+        XCTAssertFalse(c.isOnCurve)
+        XCTAssertEqual(c.description, "Point (0.0, 2.0) NOT on Curve y^2 = x^3 + -1.0*x + 1.0")
     }
 
     func testVerifyEquation() {
