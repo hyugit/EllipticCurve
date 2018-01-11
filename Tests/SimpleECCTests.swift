@@ -4,7 +4,7 @@ import Foundation
 import XCTest
 @testable import EllipticCurve
 
-let P: UInt8 = 7
+fileprivate let P: UInt8 = 7
 
 extension UInt8: NumericWithDivision {}
 
