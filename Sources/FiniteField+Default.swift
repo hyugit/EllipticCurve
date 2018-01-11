@@ -12,9 +12,16 @@ extension FiniteField {
         }
     }
 
+    public static var Order: Element {
+        get {
+            return Self.Characteristic
+        }
+    }
+
     public init(withValue source: Element) {
         self.init()
-        self.value = source % Self.Characteristic
+        let element = Element(truncatingIfNeeded: source)
+        self.value = element % Self.Characteristic
     }
 
     public init(_ source: Element) {
@@ -29,7 +36,11 @@ extension FiniteField {
     }
 
     public init(integerLiteral: Int) {
-        self.init(withValue: Element(integerLiteral))
+        if integerLiteral >= 0 {
+            self.init(withValue: Element(integerLiteral))
+        } else {
+            self.init(withValue: Element(truncatingIfNeeded: integerLiteral))
+        }
     }
 
     var magnitude: Self {
