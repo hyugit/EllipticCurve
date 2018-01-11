@@ -13,6 +13,7 @@ public protocol EllipticCurve: Equatable, CustomStringConvertible {
 
     static var Infinity: Self { get }
     var isInfinity: Bool { get }
+    var isOnCurve: Bool { get }
 
     init()
     init(x: Coordinate, y: Coordinate)
