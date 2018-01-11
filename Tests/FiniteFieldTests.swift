@@ -10,7 +10,6 @@ struct FFInt: FiniteField {
     typealias Element = UInt8
 
     static var Characteristic: UInt8 = p
-    static var Order: UInt8 = p // all 0..<p are included
 
     var value: UInt8
 
@@ -19,7 +18,7 @@ struct FFInt: FiniteField {
     }
 }
 
-class FiniteFieldIntegerTests: XCTestCase {
+class FiniteFieldTests: XCTestCase {
     func testInit() {
         let a: FFInt = 1
         let b = FFInt(1)
@@ -29,7 +28,10 @@ class FiniteFieldIntegerTests: XCTestCase {
     }
 
     func testProperties() {
-        // TODO: test common properties
+        XCTAssertEqual(FFInt.Zero, FFInt(0))
+        XCTAssertEqual(FFInt.Order, FFInt.Characteristic) // default order
+        XCTAssertEqual(FFInt(2).magnitude, FFInt(2))
+        XCTAssertEqual(FFInt(3).description, "FFInt.Type: 3 of F_31")
     }
 
     func testAddition() {
@@ -40,10 +42,10 @@ class FiniteFieldIntegerTests: XCTestCase {
     }
 
     func testAddition1() {
-        let a = FFInt(17)
+        var a = FFInt(17)
         let b = FFInt(21)
-        let c = a + b
-        XCTAssertEqual(c.value, 7)
+        a += b
+        XCTAssertEqual(a.value, 7)
     }
 
     func testSubtraction() {
@@ -54,10 +56,10 @@ class FiniteFieldIntegerTests: XCTestCase {
     }
 
     func testSubtraction1() {
-        let a = FFInt(15)
+        var a = FFInt(15)
         let b = FFInt(30)
-        let c = a - b
-        XCTAssertEqual(c.value, 16)
+        a -= b
+        XCTAssertEqual(a, 16)
     }
 
     func testMultiplication() {
@@ -65,12 +67,18 @@ class FiniteFieldIntegerTests: XCTestCase {
         let b = FFInt(19)
         let c = a * b
         XCTAssertEqual(c.value, 22)
+        var d = a
+        d *= b
+        XCTAssertEqual(d, c)
     }
 
     func testDivision() {
         let a = FFInt(3)
         let b = FFInt(24)
         XCTAssertEqual(4 as FFInt, a / b)
+        var c = a
+        c /= b
+        XCTAssertEqual(4 as FFInt, c)
     }
 
     func testPow() {
@@ -85,5 +93,12 @@ class FiniteFieldIntegerTests: XCTestCase {
         let b = FFInt(28)
         let c = a ^ b
         XCTAssertEqual(c, 28 as FFInt)
+    }
+
+    func testComparison() {
+        let a = FFInt(1)
+        let b = FFInt(2)
+        XCTAssertFalse(a > b)
+        XCTAssertTrue(a < b)
     }
 }
