@@ -59,9 +59,8 @@ class EllipticCurveTests: XCTestCase {
 
     func testMultiplication() {
         let a = ECPoint(x: 0, y: -1)
-        let b = 2 * a
-        let c = 3 * a
-        XCTAssertEqual(b, ECPoint(x: 0.25, y: 0.875))
-        XCTAssertEqual(c, ECPoint(x: 56, y: -419))
+        XCTAssertEqual(0 * a, ECPoint.Infinity)
+        XCTAssertEqual(2 * a, ECPoint(x: 0.25, y: 0.875))
+        XCTAssertEqual(3 * a, ECPoint(x: 56, y: -419))
     }
 }
