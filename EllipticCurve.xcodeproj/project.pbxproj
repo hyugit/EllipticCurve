@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5F0350E9FD7F9555B3AC08C3 /* FiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0357CE5E09C64F23F84CEA /* FiniteField.swift */; };
 		5F0354B0D6F2B61B444D70D9 /* FiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0357CE5E09C64F23F84CEA /* FiniteField.swift */; };
+		634517E62007F2B4002AEC9A /* AnotherECCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634517E52007F2B4002AEC9A /* AnotherECCTests.swift */; };
 		635B907B2003C35000E663A3 /* FiniteField+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B90792003C35000E663A3 /* FiniteField+Default.swift */; };
 		635C3F7A20057DC20048070B /* Numeric+Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C3F7920057DC20048070B /* Numeric+Division.swift */; };
 		635C3F7B20057DC20048070B /* Numeric+Division.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C3F7920057DC20048070B /* Numeric+Division.swift */; };
@@ -67,6 +68,7 @@
 		5F0357CE5E09C64F23F84CEA /* FiniteField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiniteField.swift; sourceTree = "<group>"; };
 		6315FCF02004036600707738 /* EllipticCurve+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EllipticCurve+Default.swift"; sourceTree = "<group>"; };
 		6315FCF3200418FA00707738 /* EllipticCurveOverFiniteField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticCurveOverFiniteField.swift; sourceTree = "<group>"; };
+		634517E52007F2B4002AEC9A /* AnotherECCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherECCTests.swift; sourceTree = "<group>"; };
 		635B90792003C35000E663A3 /* FiniteField+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FiniteField+Default.swift"; sourceTree = "<group>"; };
 		635C3F7920057DC20048070B /* Numeric+Division.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Division.swift"; sourceTree = "<group>"; };
 		636CD5EB200289E20018354F /* EllipticCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticCurve.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				636CD5F32002C04D0018354F /* FiniteFieldTests.swift */,
 				636F627A2004623500519393 /* EllipticCurveTests.swift */,
 				63AF49C22005D5B7002B70A3 /* SimpleECCTests.swift */,
+				634517E52007F2B4002AEC9A /* AnotherECCTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				636F627B2004623500519393 /* EllipticCurveTests.swift in Sources */,
 				639964632003070C007231D9 /* FiniteFieldTests.swift in Sources */,
 				63AF49C32005D5B7002B70A3 /* SimpleECCTests.swift in Sources */,
+				634517E62007F2B4002AEC9A /* AnotherECCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
