@@ -19,11 +19,14 @@
 		636F627B2004623500519393 /* EllipticCurveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F627A2004623500519393 /* EllipticCurveTests.swift */; };
 		6399645120030496007231D9 /* EllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636CD5EB200289E20018354F /* EllipticCurve.swift */; };
 		63996452200304A8007231D9 /* UInt256.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63AB7FC71FFEB7DD002C2F4F /* UInt256.framework */; };
-		639964632003070C007231D9 /* FiniteFieldIntegerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636CD5F32002C04D0018354F /* FiniteFieldIntegerTests.swift */; };
+		639964632003070C007231D9 /* FiniteFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636CD5F32002C04D0018354F /* FiniteFieldTests.swift */; };
 		6399647C20030F8C007231D9 /* EllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636CD5EB200289E20018354F /* EllipticCurve.swift */; };
 		6399648020030FC6007231D9 /* UInt256.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6399647F20030FC6007231D9 /* UInt256.framework */; };
 		639964832003102C007231D9 /* UInt256.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 639964822003102C007231D9 /* UInt256.framework.dSYM */; };
 		6399648820031432007231D9 /* EllipticCurve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6399644820030486007231D9 /* EllipticCurve.framework */; };
+		63AF49C32005D5B7002B70A3 /* SimpleECCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF49C22005D5B7002B70A3 /* SimpleECCTests.swift */; };
+		63BA9CE620071179006F86FE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63BA9CE420071179006F86FE /* Info.plist */; };
+		63BA9CE720071179006F86FE /* EllipticCurve.h in Headers */ = {isa = PBXBuildFile; fileRef = 63BA9CE520071179006F86FE /* EllipticCurve.h */; };
 		63D049982003EF94005D8765 /* FiniteField+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B90792003C35000E663A3 /* FiniteField+Default.swift */; };
 		63D3EC0C200317E1004839AC /* UInt256.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63AB7FC71FFEB7DD002C2F4F /* UInt256.framework */; };
 		63D3EC0D200317F6004839AC /* UInt256.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63AB7FC71FFEB7DD002C2F4F /* UInt256.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -69,7 +72,7 @@
 		635B90792003C35000E663A3 /* FiniteField+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FiniteField+Default.swift"; sourceTree = "<group>"; };
 		635C3F7920057DC20048070B /* Numeric+Division.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Numeric+Division.swift"; sourceTree = "<group>"; };
 		636CD5EB200289E20018354F /* EllipticCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticCurve.swift; sourceTree = "<group>"; };
-		636CD5F32002C04D0018354F /* FiniteFieldIntegerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteFieldIntegerTests.swift; sourceTree = "<group>"; };
+		636CD5F32002C04D0018354F /* FiniteFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteFieldTests.swift; sourceTree = "<group>"; };
 		636F627A2004623500519393 /* EllipticCurveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticCurveTests.swift; sourceTree = "<group>"; };
 		6399644820030486007231D9 /* EllipticCurve.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EllipticCurve.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63996458200306ED007231D9 /* EllipticCurveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EllipticCurveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,8 +81,9 @@
 		639964822003102C007231D9 /* UInt256.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = UInt256.framework.dSYM; path = Carthage/Build/Mac/UInt256.framework.dSYM; sourceTree = "<group>"; };
 		63AB7F9B1FFE78CB002C2F4F /* ECPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ECPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		63AB7FC71FFEB7DD002C2F4F /* UInt256.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UInt256.framework; path = Carthage/Build/iOS/UInt256.framework; sourceTree = "<group>"; };
-		63DD8C371FFD925000BAB4B2 /* EllipticCurve.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EllipticCurve.h; sourceTree = "<group>"; };
-		63DD8C381FFD925000BAB4B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63AF49C22005D5B7002B70A3 /* SimpleECCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleECCTests.swift; sourceTree = "<group>"; };
+		63BA9CE420071179006F86FE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63BA9CE520071179006F86FE /* EllipticCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EllipticCurve.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,18 +118,19 @@
 		636CD5F22002C04D0018354F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				636CD5F32002C04D0018354F /* FiniteFieldIntegerTests.swift */,
+				636CD5F32002C04D0018354F /* FiniteFieldTests.swift */,
 				636F627A2004623500519393 /* EllipticCurveTests.swift */,
+				63AF49C22005D5B7002B70A3 /* SimpleECCTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		639964872003139D007231D9 /* macOS */ = {
+		639964872003139D007231D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				639964822003102C007231D9 /* UInt256.framework.dSYM */,
 			);
-			name = macOS;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		63AB7FC61FFEB7DD002C2F4F /* Frameworks */ = {
@@ -143,7 +148,7 @@
 				63AB7F9B1FFE78CB002C2F4F /* ECPlayground.playground */,
 				63DD8C3F1FFDA93800BAB4B2 /* Sources */,
 				636CD5F22002C04D0018354F /* Tests */,
-				639964872003139D007231D9 /* macOS */,
+				639964872003139D007231D9 /* Resources */,
 				63DD8C351FFD925000BAB4B2 /* Products */,
 				63AB7FC61FFEB7DD002C2F4F /* Frameworks */,
 			);
@@ -162,8 +167,8 @@
 		63DD8C3F1FFDA93800BAB4B2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				63DD8C381FFD925000BAB4B2 /* Info.plist */,
-				63DD8C371FFD925000BAB4B2 /* EllipticCurve.h */,
+				63BA9CE520071179006F86FE /* EllipticCurve.h */,
+				63BA9CE420071179006F86FE /* Info.plist */,
 				635C3F7920057DC20048070B /* Numeric+Division.swift */,
 				5F0357CE5E09C64F23F84CEA /* FiniteField.swift */,
 				635B90792003C35000E663A3 /* FiniteField+Default.swift */,
@@ -181,6 +186,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63BA9CE720071179006F86FE /* EllipticCurve.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63BA9CE620071179006F86FE /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +362,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				636F627B2004623500519393 /* EllipticCurveTests.swift in Sources */,
-				639964632003070C007231D9 /* FiniteFieldIntegerTests.swift in Sources */,
+				639964632003070C007231D9 /* FiniteFieldTests.swift in Sources */,
+				63AF49C32005D5B7002B70A3 /* SimpleECCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
