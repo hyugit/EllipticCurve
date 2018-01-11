@@ -5,20 +5,19 @@ import Foundation
 
 let p: UInt8 = 223
 
-struct FFInt: FiniteFieldInteger {
+struct FFInt: FiniteField {
     typealias Element = UInt8
-    typealias Multiplier = FFInt
 
     static var Characteristic: Element = p
     static var Order: Element = p // all 0..<p are included
 
     var value: Element
 
-    init(_ source: Element) {
-        value = source % p
+    init() {
+        value = 0
     }
 }
 
-let a: FFInt = 0
-a.description
+let a: FFInt = 59
+print(a.description)
 
