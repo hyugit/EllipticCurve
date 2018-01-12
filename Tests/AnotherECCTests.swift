@@ -6,7 +6,7 @@ import XCTest
 
 fileprivate let P: UInt8 = 223
 
-struct FFInt223: FiniteField {
+struct FFInt223: FiniteFieldInteger {
     typealias Element = UInt8
     static var Characteristic: UInt8 = P
     var value: UInt8

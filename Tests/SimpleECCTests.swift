@@ -8,7 +8,7 @@ fileprivate let P: UInt8 = 7
 
 extension UInt8: NumericWithDivision {}
 
-struct FFInt7: FiniteField {
+struct FFInt7: FiniteFieldInteger {
     typealias Element = UInt8
 
     static var Characteristic: UInt8 = P

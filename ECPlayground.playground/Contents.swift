@@ -5,7 +5,7 @@ import Foundation
 
 let p: UInt8 = 223
 
-struct FFInt: FiniteField {
+struct FFInt: FiniteFieldInteger {
     typealias Element = UInt8
 
     static var Characteristic: Element = p
