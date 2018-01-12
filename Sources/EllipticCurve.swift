@@ -3,7 +3,7 @@
 import Foundation
 
 public protocol EllipticCurve: Equatable, CustomStringConvertible {
-    associatedtype Coordinate: NumericWithDivision
+    associatedtype Coordinate: BasicArithmeticOperations
 
     static var a: Coordinate { get }
     static var b: Coordinate { get }
