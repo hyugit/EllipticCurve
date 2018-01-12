@@ -7,7 +7,6 @@ public protocol FiniteField: NumericWithDivision, Comparable, CustomStringConver
     associatedtype Element: UnsignedInteger, FixedWidthInteger
 
     static var Characteristic: Element { get }
-    static var Order: Element { get }
     static var Zero: Self { get }
 
     var value: Element { get set }

@@ -12,12 +12,6 @@ extension FiniteField {
         }
     }
 
-    public static var Order: Element {
-        get {
-            return Self.Characteristic
-        }
-    }
-
     public init(withValue source: Element) {
         self.init()
         let element = Element(truncatingIfNeeded: source)
@@ -28,7 +22,7 @@ extension FiniteField {
         self.init(withValue: source)
     }
 
-    init?<T>(exactly source: T) where T : BinaryInteger {
+    public init?<T>(exactly source: T) where T : BinaryInteger {
         if let src = Element(exactly: source) {
             self.init(withValue: src)
         }
@@ -43,7 +37,7 @@ extension FiniteField {
         }
     }
 
-    var magnitude: Self {
+    public var magnitude: Self {
         return Self(withValue: value)
     }
 
