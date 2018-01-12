@@ -2,13 +2,28 @@
 
 import Foundation
 
-extension FiniteField {
+/// maybe should be extension for FiniteFieldIntegers,
+/// well... at least those arithmetics are for integers specifically
+/// and do not apply to points or other element types
+extension FiniteFieldInteger {
     public typealias IntegerLiteralType = Int
     public typealias Magnitude = Self.Type
+
+    public static var Order: Element {
+        get {
+            return Self.Characteristic
+        }
+    }
 
     public static var Zero: Self {
         get {
             return Self(withValue: 0)
+        }
+    }
+
+    public static var One: Self {
+        get {
+            return Self(withValue: 1)
         }
     }
 

@@ -6,7 +6,7 @@ import XCTest
 // for test purposes, use a small prime number
 let p: UInt8 = 31
 
-struct FFInt: FiniteField {
+struct FFInt: FiniteFieldInteger {
     typealias Element = UInt8
 
     static var Characteristic: UInt8 = p
