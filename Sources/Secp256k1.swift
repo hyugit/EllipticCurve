@@ -3,7 +3,7 @@
 import Foundation
 import UInt256
 
-public let Parameters = (
+let Parameters = (
     P: UInt256([UInt64.max, UInt64.max, UInt64.max, 0xFFFFFFFEFFFFFC2F]),
 
     a: UInt256(0),
@@ -17,23 +17,13 @@ public let Parameters = (
     n: UInt256([UInt64.max, 0xFFFFFFFFFFFFFFFE, 0xBAAEDCE6AF48A03B, 0xBFD25E8CD0364141])
 )
 
-public struct FFInt256: FiniteFieldInteger {
-    public static var Characteristic: UInt256 = Parameters.P
-    public var value: UInt256
-
-    public init() {
-        value = 0
-    }
-}
-
-public struct ECPoint: EllipticCurveOverFiniteField {
-    public static var Generator = ECPoint(withCoordinates: Parameters.G)
-
+public struct Secp256k1: EllipticCurveOverFiniteField {
+    public static var Generator = Secp256k1(withCoordinates: Parameters.G)
     public static var Order: UInt256 = Parameters.n
+
     public static var a = FFInt256(Parameters.a)
     public static var b = FFInt256(Parameters.b)
 
-    public var _value: UInt256?
     public var x: FFInt256
     public var y: FFInt256?
 

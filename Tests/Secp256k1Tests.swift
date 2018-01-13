@@ -5,7 +5,7 @@ import XCTest
 
 class Secp256k1Tests: XCTestCase {
     func testInit() {
-        XCTAssertNotNil(ECPoint())
-        XCTAssertNotNil(ECPoint.Generator)
+        XCTAssertNotNil(Secp256k1())
+        XCTAssertNotNil(Secp256k1.Generator)
     }
 }
