@@ -6,8 +6,8 @@ import UInt256
 public let Parameters = (
     P: UInt256([UInt64.max, UInt64.max, UInt64.max, 0xFFFFFFFEFFFFFC2F]),
 
-    a: FFInt256(0),
-    b: FFInt256(7),
+    a: UInt256(0),
+    b: UInt256(7),
 
     G: (
         x: UInt256([0x79BE667EF9DCBBAC, 0x55A06295CE870B07, 0x029BFCDB2DCE28D9, 0x59F2815B16F81798]),
@@ -30,8 +30,8 @@ public struct ECPoint: EllipticCurveOverFiniteField {
     public static var Generator = ECPoint(withCoordinates: Parameters.G)
 
     public static var Order: UInt256 = Parameters.n
-    public static var a = Parameters.a
-    public static var b = Parameters.b
+    public static var a = FFInt256(Parameters.a)
+    public static var b = FFInt256(Parameters.b)
 
     public var _value: UInt256?
     public var x: FFInt256

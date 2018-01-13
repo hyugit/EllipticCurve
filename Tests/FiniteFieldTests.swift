@@ -21,8 +21,14 @@ class FiniteFieldTests: XCTestCase {
         let a: FFInt = 1
         let b = FFInt(1)
         let c = FFInt(1)
+        let d: FFInt = -1
+        let e = FFInt(exactly: UInt8(1))
+        let f = FFInt(exactly: UInt64.max)
         XCTAssertEqual(a, b)
         XCTAssertEqual(b, c)
+        XCTAssertEqual(d, FFInt(UInt8.max))
+        XCTAssertEqual(e, 1)
+        XCTAssertEqual(f, nil)
     }
 
     func testProperties() {
