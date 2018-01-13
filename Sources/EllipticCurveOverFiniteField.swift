@@ -23,10 +23,13 @@ public protocol EllipticCurveOverFiniteField: EllipticCurve, FiniteField where
     Self.Element == Self.Coordinate.Element
 {
     static var Generator: Self { get }
+
+    // TODO: find a better way to do this
+    var _value: Element? { get set }
     var value: Element? { get set }
 
     init()
     init?(withValue source: Element)
     init?(_ source: Element)
-    init(withPoint point: (x: Element, y: Element))
+    init(withCoordinates coord: (x: Element, y: Element))
 }
