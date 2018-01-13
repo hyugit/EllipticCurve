@@ -3,16 +3,14 @@
 import XCTest
 @testable import EllipticCurve
 
-extension Double: NumericWithDivision {}
+extension Double: BasicArithmeticOperations {}
 
-struct ECPoint: EllipticCurve {
-    typealias Coordinate = Double
+fileprivate struct ECPoint: EllipticCurve {
+    static var a: Double = -1
+    static var b: Double = 1
 
-    static var a: Coordinate = -1
-    static var b: Coordinate = 1
-
-    var x: Coordinate
-    var y: Coordinate?
+    var x: Double
+    var y: Double?
 
     init() {
         x = 0
@@ -29,11 +27,11 @@ class EllipticCurveTests: XCTestCase {
         let b = ECPoint(x: 0, y: 1)
         XCTAssertFalse(b.isInfinity)
         XCTAssertTrue(b.isOnCurve)
-        XCTAssertEqual(b.description, "Point (0.0, 1.0) on Curve y^2 = x^3 + -1.0*x + 1.0")
+        XCTAssertEqual(b.description, "Point (0.0, 1.0) on Curve y^2 = x^3 + (-1.0)*x + (1.0)")
         let c = ECPoint(x: 0, y: 2)
         XCTAssertFalse(c.isInfinity)
         XCTAssertFalse(c.isOnCurve)
-        XCTAssertEqual(c.description, "Point (0.0, 2.0) NOT on Curve y^2 = x^3 + -1.0*x + 1.0")
+        XCTAssertEqual(c.description, "Point (0.0, 2.0) NOT on Curve y^2 = x^3 + (-1.0)*x + (1.0)")
     }
 
     func testVerifyEquation() {

@@ -5,29 +5,25 @@ import Foundation
 
 let p: UInt8 = 223
 
-struct FFInt: FiniteFieldInteger {
-    typealias Element = UInt8
+struct MyFFInt: FiniteFieldInteger {
+    static var Characteristic = p
 
-    static var Characteristic: Element = p
-
-    var value: Element
+    var value: UInt8
 
     init() {
         value = 0
     }
 }
 
-let a: FFInt = 59
+let a: MyFFInt = 59
 print(a.description)
 
-struct ECPoint: EllipticCurve {
-    typealias Coordinate = FFInt
+struct MyECPoint: EllipticCurve {
+    static var a: MyFFInt = 2
+    static var b: MyFFInt = 7
 
-    static var a: Coordinate = 2
-    static var b: Coordinate = 7
-
-    var x: Coordinate
-    var y: Coordinate?
+    var x: MyFFInt
+    var y: MyFFInt?
 
     init() {
         x = 0
@@ -35,9 +31,8 @@ struct ECPoint: EllipticCurve {
     }
 }
 
-let b = ECPoint(x: 16, y: 11) // Generator point
-var next = ECPoint.Infinity
-for _ in 0..<212 {
-    next = next + b
-    print(next.description)
+let b = MyECPoint(x: 16, y: 11) // Generator point
+var next = MyECPoint.Infinity
+for i in [0, 1, 211, 212] {
+    print(i * b)
 }

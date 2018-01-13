@@ -2,53 +2,31 @@
 
 import Foundation
 
-/// EXPERIMENTAL
-///
 /// A top level protocol for elliptic curve crypto
 ///
-/// to have value and point as properties instead of
-/// protocol inheritance has certain benefits:
-/// - it resembles more closely to ECKeyPairs where
-///   value can be seen as the private key, and the
-///   point can be seen as the public key
-/// - it also allows reusing the default implementations
-///   from both protocols -- inheriting would invalidate
-///   default functions due to function naming conflicts
-public protocol EllipticCurveOverFiniteField {
-    associatedtype Value: FiniteField
-    associatedtype Point: EllipticCurve where Point.Coordinate == Value
-
-    static var Generator: Point { get }
-
-    var value: Value? { get set }
-    var point: Point { get set }
+/// elliptic curve over finite field itself is a finite
+/// field of points, with Infinity being Zero, Generator
+/// being One.
+///
+/// The Coordinate typealias from EllipticCurve
+/// is the determining factor of the types, as can be seen from
+/// protocol requirements.
+///
+/// The protocol also has an optional value property which is
+/// used to represent the "index" from which the coordinates
+/// can be calculated:
+///
+/// coordinates = index * Generator
+///
+public protocol EllipticCurveOverFiniteField: EllipticCurve, FiniteField where
+    Self.Coordinate: FiniteFieldInteger,
+    Self.Element == Self.Coordinate.Element
+{
+    static var Generator: Self { get }
+    var value: Element? { get set }
 
     init()
-    init(withValue source: Value)
-    init(withPoint source: Point)
-}
-
-extension EllipticCurveOverFiniteField {
-
-    public var point: Point {
-        get {
-            return point
-        }
-
-        set {
-            point = newValue
-            self.value = nil
-        }
-    }
-
-    init(withPoint source: Point) {
-        self.init()
-        self.point = source
-    }
-
-    init(withValue source: Value) {
-        self.init()
-        self.value = source
-        self.point = source.value * Self.Generator
-    }
+    init?(withValue source: Element)
+    init?(_ source: Element)
+    init(withPoint point: (x: Element, y: Element))
 }

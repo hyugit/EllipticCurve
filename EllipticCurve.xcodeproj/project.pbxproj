@@ -26,8 +26,11 @@
 		639964832003102C007231D9 /* UInt256.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = 639964822003102C007231D9 /* UInt256.framework.dSYM */; };
 		6399648820031432007231D9 /* EllipticCurve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6399644820030486007231D9 /* EllipticCurve.framework */; };
 		63AF49C32005D5B7002B70A3 /* SimpleECCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF49C22005D5B7002B70A3 /* SimpleECCTests.swift */; };
+		63C386AF2009895B005DF97E /* ECOverFFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFEDA020097DAB00450E63 /* ECOverFFTests.swift */; };
 		63CFED9B2009731100450E63 /* FiniteFieldInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFED9A2009731100450E63 /* FiniteFieldInteger.swift */; };
 		63CFED9C2009731100450E63 /* FiniteFieldInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFED9A2009731100450E63 /* FiniteFieldInteger.swift */; };
+		63CFED9E20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFED9D20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift */; };
+		63CFED9F20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFED9D20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift */; };
 		63D049982003EF94005D8765 /* FiniteFieldInteger+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */; };
 		63D3EC0C200317E1004839AC /* UInt256.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63AB7FC71FFEB7DD002C2F4F /* UInt256.framework */; };
 		63D3EC0D200317F6004839AC /* UInt256.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 63AB7FC71FFEB7DD002C2F4F /* UInt256.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -88,6 +91,8 @@
 		63BA9CE420071179006F86FE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63BA9CE520071179006F86FE /* EllipticCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EllipticCurve.h; sourceTree = "<group>"; };
 		63CFED9A2009731100450E63 /* FiniteFieldInteger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteFieldInteger.swift; sourceTree = "<group>"; };
+		63CFED9D20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EllipticCurveOverFiniteField+Default.swift"; sourceTree = "<group>"; };
+		63CFEDA020097DAB00450E63 /* ECOverFFTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECOverFFTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +131,7 @@
 				636F627A2004623500519393 /* EllipticCurveTests.swift */,
 				63AF49C22005D5B7002B70A3 /* SimpleECCTests.swift */,
 				634517E52007F2B4002AEC9A /* AnotherECCTests.swift */,
+				63CFEDA020097DAB00450E63 /* ECOverFFTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -181,6 +187,7 @@
 				636CD5EB200289E20018354F /* EllipticCurve.swift */,
 				6315FCF02004036600707738 /* EllipticCurve+Default.swift */,
 				6315FCF3200418FA00707738 /* EllipticCurveOverFiniteField.swift */,
+				63CFED9D20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift */,
 				634517E920081528002AEC9A /* Secp256k1.swift */,
 			);
 			path = Sources;
@@ -352,6 +359,7 @@
 				6399645120030496007231D9 /* EllipticCurve.swift in Sources */,
 				636F62792004323A00519393 /* EllipticCurveOverFiniteField.swift in Sources */,
 				5F0350E9FD7F9555B3AC08C3 /* FiniteField.swift in Sources */,
+				63CFED9E20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +371,7 @@
 				639964632003070C007231D9 /* FiniteFieldTests.swift in Sources */,
 				63AF49C32005D5B7002B70A3 /* SimpleECCTests.swift in Sources */,
 				634517E62007F2B4002AEC9A /* AnotherECCTests.swift in Sources */,
+				63C386AF2009895B005DF97E /* ECOverFFTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +386,7 @@
 				636F62782004323900519393 /* EllipticCurveOverFiniteField.swift in Sources */,
 				635B907B2003C35000E663A3 /* FiniteFieldInteger+Default.swift in Sources */,
 				5F0354B0D6F2B61B444D70D9 /* FiniteField.swift in Sources */,
+				63CFED9F20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
