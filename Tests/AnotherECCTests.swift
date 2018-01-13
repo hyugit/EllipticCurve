@@ -6,9 +6,8 @@ import XCTest
 
 fileprivate let P: UInt8 = 223
 
-struct FFInt223: FiniteFieldInteger {
-    typealias Element = UInt8
-    static var Characteristic: UInt8 = P
+fileprivate struct FFInt223: FiniteFieldInteger {
+    static var Characteristic = P
     var value: UInt8
 
     init() {
@@ -16,14 +15,13 @@ struct FFInt223: FiniteFieldInteger {
     }
 }
 
-struct AnotherECC: EllipticCurve {
-    typealias Coordinate = FFInt223
+fileprivate struct AnotherECC: EllipticCurve {
 
-    static var a: Coordinate = 2
-    static var b: Coordinate = 7
+    static var a: FFInt223 = 2
+    static var b: FFInt223 = 7
 
-    var x: Coordinate
-    var y: Coordinate?
+    var x: FFInt223
+    var y: FFInt223?
 
     init() {
         x = 0
@@ -49,7 +47,10 @@ class AnotherECCTests: XCTestCase {
 
     func testMultiplication() {
         let point = AnotherECC(x: 16, y: 11)
-        for i in 1..<211 {
+
+        // this finite field of points has 211
+        // elements, i.e. order Q == 211
+        for i in 1...211 {
             XCTAssertFalse((i * point).isInfinity)
         }
         XCTAssertTrue((212 * point).isInfinity)

@@ -6,10 +6,8 @@ import XCTest
 // for test purposes, use a small prime number
 let p: UInt8 = 31
 
-struct FFInt: FiniteFieldInteger {
-    typealias Element = UInt8
-
-    static var Characteristic: UInt8 = p
+fileprivate struct FFInt: FiniteFieldInteger {
+    static var Characteristic = p
 
     var value: UInt8
 
@@ -31,7 +29,7 @@ class FiniteFieldTests: XCTestCase {
         XCTAssertEqual(FFInt.Zero, FFInt(0))
         XCTAssertEqual(FFInt.Order, FFInt.Characteristic) // default order
         XCTAssertEqual(FFInt(2).magnitude, FFInt(2))
-        XCTAssertEqual(FFInt(3).description, "FFInt.Type: 3 of F_31")
+        XCTAssertEqual(FFInt(3).description, "Element 3 of F_31")
     }
 
     func testAddition() {

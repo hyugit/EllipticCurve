@@ -6,13 +6,10 @@ import XCTest
 
 fileprivate let P: UInt8 = 7
 
-extension UInt8: NumericWithDivision {}
+extension UInt8: BasicArithmeticOperations {}
 
-struct FFInt7: FiniteFieldInteger {
-    typealias Element = UInt8
-
-    static var Characteristic: UInt8 = P
-
+fileprivate struct FFInt7: FiniteFieldInteger {
+    static var Characteristic = P
     var value: UInt8
 
     init() {
@@ -20,14 +17,12 @@ struct FFInt7: FiniteFieldInteger {
     }
 }
 
-struct MyECC: EllipticCurve {
-    typealias Coordinate = FFInt7
+fileprivate struct MyECC: EllipticCurve {
+    static var a: FFInt7 = FFInt7(P-1)
+    static var b: FFInt7 = 1
 
-    static var a: Coordinate = FFInt7(P-1)
-    static var b: Coordinate = 1
-
-    var x: Coordinate
-    var y: Coordinate?
+    var x: FFInt7
+    var y: FFInt7?
 
     init() {
         x = 0
