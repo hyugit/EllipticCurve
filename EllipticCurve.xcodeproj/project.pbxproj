@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5F0350E9FD7F9555B3AC08C3 /* FiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0357CE5E09C64F23F84CEA /* FiniteField.swift */; };
 		5F0354B0D6F2B61B444D70D9 /* FiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0357CE5E09C64F23F84CEA /* FiniteField.swift */; };
+		63021BBE20099E20005EBEAD /* Secp256k1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634517E920081528002AEC9A /* Secp256k1.swift */; };
+		63021BBF20099E21005EBEAD /* Secp256k1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634517E920081528002AEC9A /* Secp256k1.swift */; };
 		634517E62007F2B4002AEC9A /* AnotherECCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634517E52007F2B4002AEC9A /* AnotherECCTests.swift */; };
 		635B907B2003C35000E663A3 /* FiniteFieldInteger+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */; };
 		635C3F7A20057DC20048070B /* BasicArithmeticOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635C3F7920057DC20048070B /* BasicArithmeticOperations.swift */; };
@@ -354,6 +356,7 @@
 			files = (
 				635C3F7A20057DC20048070B /* BasicArithmeticOperations.swift in Sources */,
 				636F62772004323600519393 /* EllipticCurve+Default.swift in Sources */,
+				63021BBF20099E21005EBEAD /* Secp256k1.swift in Sources */,
 				63CFED9B2009731100450E63 /* FiniteFieldInteger.swift in Sources */,
 				63D049982003EF94005D8765 /* FiniteFieldInteger+Default.swift in Sources */,
 				6399645120030496007231D9 /* EllipticCurve.swift in Sources */,
@@ -381,6 +384,7 @@
 			files = (
 				635C3F7B20057DC20048070B /* BasicArithmeticOperations.swift in Sources */,
 				636F62762004323400519393 /* EllipticCurve+Default.swift in Sources */,
+				63021BBE20099E20005EBEAD /* Secp256k1.swift in Sources */,
 				63CFED9C2009731100450E63 /* FiniteFieldInteger.swift in Sources */,
 				6399647C20030F8C007231D9 /* EllipticCurve.swift in Sources */,
 				636F62782004323900519393 /* EllipticCurveOverFiniteField.swift in Sources */,
