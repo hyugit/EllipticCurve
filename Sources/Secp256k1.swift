@@ -22,8 +22,8 @@ fileprivate let Parameters = (
 // TODO: this naming indicates FiniteFieldInteger could use a better architecture
 // preferably with Characteristic mutable
 // a top level object named "elliptic curve" as a shared instance could be helpful
-// it would be able to switch between curves, but each instance it spins off can
-// only interact with those instances that are of the same type
+// it would be able to switch between curves, but each instance it spins off will
+// only be able to interact with those instances that are of the same type
 public struct FFInt_secp256k1: FiniteFieldInteger {
     public static var Characteristic: UInt256 = Parameters.P
     public var value: UInt256
