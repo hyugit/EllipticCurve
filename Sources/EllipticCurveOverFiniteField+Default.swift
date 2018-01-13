@@ -6,13 +6,13 @@ extension EllipticCurveOverFiniteField {
 
     public typealias Element = Self.Coordinate.Element
 
-    static var Zero: Self {
+    public static var Zero: Self {
         get {
             return Self.Infinity
         }
     }
 
-    static var One: Self {
+    public static var One: Self {
         get {
             return Self.Generator
         }
@@ -26,34 +26,32 @@ extension EllipticCurveOverFiniteField {
 
     public var value: Element? {
         get {
-            return value
+            return _value
         }
         set {
             guard newValue != nil else {
-                value = nil
+                _value = nil
                 x = 0
                 y = nil
                 return
             }
 
             guard Self.Element(0) < newValue! && newValue! <= Self.Order else {
-                value = nil
+                _value = nil
                 x = 0
                 y = nil
                 return
             }
 
-            value = newValue!
+            _value = newValue!
             let P = newValue! * Self.Generator
             x = P.x
             y = P.y
         }
     }
 
-    public init(withPoint point: (x: Element, y: Element)) {
-        self.init()
-        self.x = x
-        self.y = y
+    public init(withCoordinates coord: (x: Element, y: Element)) {
+        self.init(x: Coordinate(withValue: coord.x), y: Coordinate(withValue: coord.y))
     }
 
     public init?(withValue source: Element) {
