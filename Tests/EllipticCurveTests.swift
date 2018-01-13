@@ -14,7 +14,6 @@ fileprivate struct ECPoint: EllipticCurve {
 
     init() {
         x = 0
-        y = 0
     }
 }
 

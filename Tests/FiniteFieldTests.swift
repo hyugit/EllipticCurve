@@ -4,7 +4,7 @@ import XCTest
 @testable import EllipticCurve
 
 // for test purposes, use a small prime number
-let p: UInt8 = 31
+fileprivate let p: UInt8 = 31
 
 fileprivate struct FFInt: FiniteFieldInteger {
     static var Characteristic = p
@@ -27,6 +27,7 @@ class FiniteFieldTests: XCTestCase {
 
     func testProperties() {
         XCTAssertEqual(FFInt.Zero, FFInt(0))
+        XCTAssertEqual(FFInt.One, FFInt(1))
         XCTAssertEqual(FFInt.Order, FFInt.Characteristic) // default order
         XCTAssertEqual(FFInt(2).magnitude, FFInt(2))
         XCTAssertEqual(FFInt(3).description, "Element 3 of F_31")

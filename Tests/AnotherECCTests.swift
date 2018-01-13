@@ -25,7 +25,6 @@ fileprivate struct AnotherECC: EllipticCurve {
 
     init() {
         x = 0
-        y = nil
     }
 }
 
