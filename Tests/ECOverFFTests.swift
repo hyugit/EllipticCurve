@@ -77,5 +77,11 @@ class ECOverFFTests: XCTestCase {
         var a = MyECFF(1)!
         a += a
         XCTAssertEqual(a.value, 2)
+        a = MyECFF.One
+        a += a
+        XCTAssertEqual(a, 2 * MyECFF.Generator)
+        a = MyECFF(110)!
+        a += a
+        XCTAssertEqual(a, MyECFF.Infinity)
     }
 }

@@ -29,7 +29,7 @@ extension FiniteFieldInteger {
 
     public init(withValue source: Element) {
         self.init()
-        let element = Element(truncatingIfNeeded: source)
+        let element: Element = source
         self.value = element % Self.Characteristic
     }
 
@@ -40,8 +40,9 @@ extension FiniteFieldInteger {
     public init?<T>(exactly source: T) where T : BinaryInteger {
         if let src = Element(exactly: source) {
             self.init(withValue: src)
+        } else {
+            return nil
         }
-        return nil
     }
 
     public init(integerLiteral: Int) {

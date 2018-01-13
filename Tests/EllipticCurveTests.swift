@@ -38,6 +38,8 @@ class EllipticCurveTests: XCTestCase {
         XCTAssertTrue(ECPoint.verifyEquation(forPoint: a))
         a = ECPoint(x: 0, y: -1)
         XCTAssertTrue(ECPoint.verifyEquation(forPoint: a))
+        a = ECPoint.Infinity
+        XCTAssertFalse(ECPoint.verifyEquation(forPoint: a))
     }
 
     func testAddition() {
@@ -48,10 +50,11 @@ class EllipticCurveTests: XCTestCase {
     }
 
     func testAddition1() {
-        let a = ECPoint.Infinity
-        let b = ECPoint(x: 0, y: -1)
-        let c = a + b
-        XCTAssertEqual(c, b)
+        var a = ECPoint.Infinity
+        var b = ECPoint(x: 0, y: -1)
+        XCTAssertEqual(a + b, b)
+        (a, b) = (b, a)
+        XCTAssertEqual(a + b, a)
     }
 
     func testAddition2() {
