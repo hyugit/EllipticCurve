@@ -24,12 +24,8 @@ public protocol EllipticCurveOverFiniteField: EllipticCurve, FiniteField where
 {
     static var Generator: Self { get }
 
-    // TODO: find a better way to do this
-    var _value: Element? { get set }
-    var value: Element? { get set }
-
     init()
-    init?(withValue source: Element)
+    init?(withSeed value: Element)
     init?(_ source: Element)
     init(withCoordinates coord: (x: Element, y: Element))
 }

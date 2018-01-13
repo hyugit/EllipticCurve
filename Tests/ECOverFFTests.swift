@@ -21,7 +21,6 @@ fileprivate struct MyECFF: EllipticCurveOverFiniteField {
     static var a: FFInt223 = 2
     static var b: FFInt223 = 7
 
-    var _value: UInt8?
     var x: FFInt223
     var y: FFInt223?
 
@@ -29,14 +28,6 @@ fileprivate struct MyECFF: EllipticCurveOverFiniteField {
 
     init() {
         x = 0
-    }
-
-    public static func +=(lhs: inout MyECFF, rhs: MyECFF) {
-        if let lVal = lhs.value, let rVal = rhs.value {
-            lhs = MyECFF(lVal + rVal) ?? MyECFF.Infinity
-        } else {
-            lhs = lhs + rhs
-        }
     }
 }
 
@@ -53,35 +44,14 @@ class ECOverFFTests: XCTestCase {
         XCTAssertNotNil(MyECFF(1))
         XCTAssertNotNil(MyECFF(211))
         XCTAssertNil(MyECFF(212))
-        XCTAssertNil(MyECFF(withValue: 212))
+        XCTAssertNil(MyECFF(withSeed: 212))
         XCTAssertNil(MyECFF(isInfinity: true).y)
         XCTAssertNotNil(MyECFF(withCoordinates: (x: 16, y: 11)))
     }
 
     func testProperties() {
-        XCTAssertNil(MyECFF.Infinity.value)
+        XCTAssertNil(MyECFF.Infinity.y)
         XCTAssertEqual(MyECFF.Characteristic, P)
         XCTAssertEqual(MyECFF.Order, 211)
-        var a = MyECFF.Infinity
-        a.value = 1
-        XCTAssertEqual(a, MyECFF.Generator)
-        a.value = 0
-        XCTAssertEqual(a, MyECFF.Zero)
-        a.value = 1
-        XCTAssertEqual(a, MyECFF.One)
-        a.value = nil
-        XCTAssertEqual(a, MyECFF.Infinity)
-    }
-
-    func testAddAcc() {
-        var a = MyECFF(1)!
-        a += a
-        XCTAssertEqual(a.value, 2)
-        a = MyECFF.One
-        a += a
-        XCTAssertEqual(a, 2 * MyECFF.Generator)
-        a = MyECFF(110)!
-        a += a
-        XCTAssertEqual(a, MyECFF.Infinity)
     }
 }
