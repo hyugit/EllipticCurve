@@ -200,14 +200,8 @@
 			children = (
 				63BA9CE520071179006F86FE /* EllipticCurve.h */,
 				63BA9CE420071179006F86FE /* Info.plist */,
-				635C3F7920057DC20048070B /* BasicArithmeticOperations.swift */,
-				5F0357CE5E09C64F23F84CEA /* FiniteField.swift */,
-				63CFED9A2009731100450E63 /* FiniteFieldInteger.swift */,
-				635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */,
-				636CD5EB200289E20018354F /* EllipticCurve.swift */,
-				6315FCF02004036600707738 /* EllipticCurve+Default.swift */,
-				6315FCF3200418FA00707738 /* EllipticCurveOverFiniteField.swift */,
-				63CFED9D20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift */,
+				63F76F60200BEAF800361F88 /* FiniteField */,
+				63F76F61200BEB0E00361F88 /* EllipticCurve */,
 				6305D13B200A549C00235A53 /* Secp192k1.swift */,
 				6305D13E200A55BE00235A53 /* Secp192r1.swift */,
 				6305D141200A56E700235A53 /* Secp224k1.swift */,
@@ -216,6 +210,28 @@
 				63C5C78C200A480F005AC4FE /* Secp256r1.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		63F76F60200BEAF800361F88 /* FiniteField */ = {
+			isa = PBXGroup;
+			children = (
+				635C3F7920057DC20048070B /* BasicArithmeticOperations.swift */,
+				5F0357CE5E09C64F23F84CEA /* FiniteField.swift */,
+				63CFED9A2009731100450E63 /* FiniteFieldInteger.swift */,
+				635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */,
+			);
+			path = FiniteField;
+			sourceTree = "<group>";
+		};
+		63F76F61200BEB0E00361F88 /* EllipticCurve */ = {
+			isa = PBXGroup;
+			children = (
+				636CD5EB200289E20018354F /* EllipticCurve.swift */,
+				6315FCF02004036600707738 /* EllipticCurve+Default.swift */,
+				6315FCF3200418FA00707738 /* EllipticCurveOverFiniteField.swift */,
+				63CFED9D20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift */,
+			);
+			path = EllipticCurve;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
