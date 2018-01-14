@@ -7,4 +7,5 @@ before_install:
   - brew install carthage
 script:
   - carthage bootstrap
+  - carthage build --no-skip-current
   - xcodebuild -scheme "EllipticCurveTests" -destination "platform=iOS Simulator,name=iPhone 5s" test
