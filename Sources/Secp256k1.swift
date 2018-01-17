@@ -19,29 +19,25 @@ fileprivate let Parameters = (
     n: UInt256([UInt64.max, 0xFFFFFFFFFFFFFFFE, 0xBAAEDCE6AF48A03B, 0xBFD25E8CD0364141])
 )
 
-// TODO: this naming indicates FiniteFieldInteger could use a better architecture
-// preferably with Characteristic mutable
-// a top level object named "elliptic curve" as a shared instance could be helpful
-// it would be able to switch between curves, but each instance it spins off will
-// only be able to interact with those instances that are of the same type
-public struct FFInt_secp256k1: FiniteFieldInteger {
-    public static var Characteristic: UInt256 = Parameters.P
-    public var value: UInt256
-
-    public init() {
-        value = 0
-    }
-}
-
 public struct Secp256k1: EllipticCurveOverFiniteField {
+
+    public struct FFInt: FiniteFieldInteger {
+        public static var Characteristic: UInt256 = Parameters.P
+        public var value: UInt256
+
+        public init() {
+            value = 0
+        }
+    }
+
     public static var Generator = Secp256k1(withCoordinates: Parameters.G)
     public static var Order: UInt256 = Parameters.n
 
-    public static var a = FFInt_secp256k1(Parameters.a)
-    public static var b = FFInt_secp256k1(Parameters.b)
+    public static var a = FFInt(Parameters.a)
+    public static var b = FFInt(Parameters.b)
 
-    public var x: FFInt_secp256k1
-    public var y: FFInt_secp256k1?
+    public var x: FFInt
+    public var y: FFInt?
 
     public init() {
         x = 0
