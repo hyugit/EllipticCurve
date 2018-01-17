@@ -29,7 +29,7 @@ extension EllipticCurveOverFiniteField {
     }
 
     public init?(withSeed value: Element) {
-        guard 0 < value && value <= Self.Order else {
+        guard 0 <= value && value < Self.Order else {
             return nil
         }
         self.init()

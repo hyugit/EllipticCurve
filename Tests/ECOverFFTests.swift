@@ -16,7 +16,7 @@ fileprivate struct FFInt223: FiniteFieldInteger {
 
 fileprivate struct MyECFF: EllipticCurveOverFiniteField {
 
-    static var Order: UInt8 = 211
+    static var Order: UInt8 = 212
 
     static var a: FFInt223 = 2
     static var b: FFInt223 = 7
@@ -39,8 +39,9 @@ class ECOverFFTests: XCTestCase {
         XCTAssertNotNil(MyECFF.Generator)
         XCTAssertEqual(MyECFF.Zero, MyECFF.Infinity)
         XCTAssertEqual(MyECFF.One, MyECFF.Generator)
+        XCTAssertEqual(MyECFF.Infinity, MyECFF.Order * MyECFF.Generator)
 
-        XCTAssertNil(MyECFF(0))
+        XCTAssertEqual(MyECFF(0), MyECFF.Infinity)
         XCTAssertNotNil(MyECFF(1))
         XCTAssertNotNil(MyECFF(211))
         XCTAssertNil(MyECFF(212))
@@ -52,6 +53,6 @@ class ECOverFFTests: XCTestCase {
     func testProperties() {
         XCTAssertNil(MyECFF.Infinity.y)
         XCTAssertEqual(MyECFF.Characteristic, P)
-        XCTAssertEqual(MyECFF.Order, 211)
+        XCTAssertEqual(MyECFF.Order, 212)
     }
 }
