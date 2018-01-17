@@ -20,24 +20,25 @@ fileprivate let Parameters = (
     n: UInt256([0x100000000, 0, 0x0001DCE8D2EC6184, 0xCAF0A971769FB1F7])
 )
 
-public struct FFInt_secp224k1: FiniteFieldInteger {
-    public static var Characteristic: UInt256 = Parameters.P
-    public var value: UInt256
-
-    public init() {
-        value = 0
-    }
-}
-
 public struct Secp224k1: EllipticCurveOverFiniteField {
+
+    public struct FFInt: FiniteFieldInteger {
+        public static var Characteristic: UInt256 = Parameters.P
+        public var value: UInt256
+
+        public init() {
+            value = 0
+        }
+    }
+
     public static var Generator = Secp224k1(withCoordinates: Parameters.G)
     public static var Order: UInt256 = Parameters.n
 
-    public static var a = FFInt_secp224k1(Parameters.a)
-    public static var b = FFInt_secp224k1(Parameters.b)
+    public static var a = FFInt(Parameters.a)
+    public static var b = FFInt(Parameters.b)
 
-    public var x: FFInt_secp224k1
-    public var y: FFInt_secp224k1?
+    public var x: FFInt
+    public var y: FFInt?
 
     public init() {
         x = 0
