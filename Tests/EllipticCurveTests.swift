@@ -5,19 +5,20 @@ import XCTest
 
 extension Double: BasicArithmeticOperations {}
 
-fileprivate struct ECPoint: EllipticCurve {
-    static var a: Double = -1
-    static var b: Double = 1
-
-    var x: Double
-    var y: Double?
-
-    init() {
-        x = 0
-    }
-}
-
 class EllipticCurveTests: XCTestCase {
+
+    struct ECPoint: EllipticCurve {
+        static var a: Double = -1
+        static var b: Double = 1
+
+        var x: Double
+        var y: Double?
+
+        init() {
+            x = 0
+        }
+    }
+
     func testProperties() {
         let a = ECPoint.Infinity
         XCTAssertTrue(a.isInfinity)

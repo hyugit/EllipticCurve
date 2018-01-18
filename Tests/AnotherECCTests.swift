@@ -6,29 +6,31 @@ import XCTest
 
 fileprivate let P: UInt8 = 223
 
-fileprivate struct FFInt223: FiniteFieldInteger {
-    static var Characteristic = P
-    var value: UInt8
-
-    init() {
-        value = 0
-    }
-}
-
-fileprivate struct AnotherECC: EllipticCurve {
-
-    static var a: FFInt223 = 2
-    static var b: FFInt223 = 7
-
-    var x: FFInt223
-    var y: FFInt223?
-
-    init() {
-        x = 0
-    }
-}
-
 class AnotherECCTests: XCTestCase {
+
+
+    struct FFInt223: FiniteFieldInteger {
+        static var Characteristic = P
+        var value: UInt8
+
+        init() {
+            value = 0
+        }
+    }
+
+    struct AnotherECC: EllipticCurve {
+
+        static var a: FFInt223 = 2
+        static var b: FFInt223 = 7
+
+        var x: FFInt223
+        var y: FFInt223?
+
+        init() {
+            x = 0
+        }
+    }
+
     func testInit() {
         XCTAssertNotNil(AnotherECC())
     }

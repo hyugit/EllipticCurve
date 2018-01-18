@@ -5,33 +5,34 @@ import XCTest
 
 fileprivate let P: UInt8 = 223
 
-fileprivate struct FFInt223: FiniteFieldInteger {
-    static var Characteristic: UInt8 = P
-    var value: UInt8
-
-    init() {
-        value = 0
-    }
-}
-
-fileprivate struct MyECFF: EllipticCurveOverFiniteField {
-
-    static var Order: UInt8 = 212
-
-    static var a: FFInt223 = 2
-    static var b: FFInt223 = 7
-
-    var x: FFInt223
-    var y: FFInt223?
-
-    static var Generator: MyECFF = MyECFF(x: 16, y: 11)
-
-    init() {
-        x = 0
-    }
-}
-
 class ECOverFFTests: XCTestCase {
+
+    struct FFInt223: FiniteFieldInteger {
+        static var Characteristic: UInt8 = P
+        var value: UInt8
+
+        init() {
+            value = 0
+        }
+    }
+
+    struct MyECFF: EllipticCurveOverFiniteField {
+
+        static var Order: UInt8 = 212
+
+        static var a: FFInt223 = 2
+        static var b: FFInt223 = 7
+
+        var x: FFInt223
+        var y: FFInt223?
+
+        static var Generator: MyECFF = MyECFF(x: 16, y: 11)
+
+        init() {
+            x = 0
+        }
+    }
+
     func testInit() {
         XCTAssertNotNil(MyECFF.Zero)
         XCTAssertNotNil(MyECFF.Infinity)

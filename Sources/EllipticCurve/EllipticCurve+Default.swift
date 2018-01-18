@@ -72,13 +72,20 @@ extension EllipticCurve {
     }
 
     public static func +(lhs: Self, rhs: Self) -> Self {
+
         if lhs.y == nil {
             return rhs
         }
+
         if rhs.y == nil {
             return lhs
         }
-        if lhs.x == rhs.x && lhs.y != rhs.y {
+
+        // if two y is complimentary, or if y is 0
+        // the line that goes through the two points
+        // will be perpendicular to the x axis, and
+        // the line cross the curve at Infinity point
+        if lhs.x == rhs.x && lhs.y! + rhs.y! == 0 {
             return Self(isInfinity: true)
         }
 
