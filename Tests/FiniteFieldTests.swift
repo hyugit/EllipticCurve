@@ -6,17 +6,19 @@ import XCTest
 // for test purposes, use a small prime number
 fileprivate let p: UInt8 = 31
 
-fileprivate struct FFInt: FiniteFieldInteger {
-    static var Characteristic = p
-
-    var value: UInt8
-
-    init() {
-        value = 0
-    }
-}
-
 class FiniteFieldTests: XCTestCase {
+    // for test purposes, use a small prime number
+
+    struct FFInt: FiniteFieldInteger {
+        static var Characteristic = p
+
+        var value: UInt8
+
+        init() {
+            value = 0
+        }
+    }
+
     func testInit() {
         let a: FFInt = 1
         let b = FFInt(1)

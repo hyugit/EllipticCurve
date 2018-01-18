@@ -19,43 +19,52 @@ public struct ECDSA<Point: EllipticCurveOverFiniteField> {
         }
     }
 
-    init() {}
+    public static func sign(hash: Element, withKey key: Element) -> Signature {
 
-    static func sign(hash: Element, withKey key: Element) -> (signature: Signature, point: Point) {
+        var r: IsomorphicField = 0
+        var s: IsomorphicField = 0
+        while s == 0 {
+            // reset to 0, so it gets regenerated
+            r = 0
+            var k: IsomorphicField = 0
 
-        // calculate r
-        let d = IsomorphicField(withValue: key)
-        let Q = d.value * Point.Generator
-        let r = IsomorphicField(withValue: Q.x.value)
+            // calculate r
+            while r == 0 {
+                var random: Element = 0
+                while random < 1 || random == key {
+                    random = arc4random_uniform(Point.Order - 1) + 1
+                }
+                k = IsomorphicField(withValue: random)
+                let Q = k.value * Point.Generator
+                r = IsomorphicField(withValue: Q.x.value)
+            }
 
-        // calculate s
-        var random = arc4random_uniform(Point.Order)
-        while random < 1 || random == key {
-            random = arc4random_uniform(Point.Order)
+            // calculate s
+            let z = IsomorphicField(withValue: hash)
+            let d = IsomorphicField(withValue: key)
+            s = (z + r * d) / k
         }
-        let k = IsomorphicField(withValue: random)
-        let z = IsomorphicField(withValue: hash)
-        let s = (z + r * d) / k
 
-        return (
-            signature: (r: r.value, s: s.value),
-            point: Q
-        )
+        return (r: r.value, s: s.value)
     }
 
-    static func verify(signature: Signature, of hash: Element, for point: Point) -> Bool {
-        guard !point.isInfinity else {
+    public static func verify(signature: Signature, ofHash h: Element, forPoint p: Point) -> Bool {
+
+        guard !p.isInfinity else {
             return false
         }
 
-        guard point.isOnCurve else {
+        guard p.isOnCurve else {
             return false
         }
 
-        guard Point.Order * point == Point.Infinity else {
-            print("not infinity!? something is horribly wrong")
-            return false
-        }
+//        // this part never gets executed unless there is an error
+//        // with that multiplication, which should be caught by a
+//        // test where the multiplication is implemented
+//        guard Point.Order * p == Point.Infinity else {
+//            fatalError("not infinity!? something is horribly wrong")
+//            return false
+//        }
 
         guard 0 < signature.r && signature.r < Point.Order else {
             return false
@@ -67,10 +76,10 @@ public struct ECDSA<Point: EllipticCurveOverFiniteField> {
 
         let r = IsomorphicField(withValue: signature.r)
         let s = IsomorphicField(withValue: signature.s)
-        let z = IsomorphicField(withValue: hash)
+        let z = IsomorphicField(withValue: h)
         let u = z / s
         let v = r / s
-        let P = u.value * Point.Generator + v.value * point
+        let P = u.value * Point.Generator + v.value * p
 
         return P.x.value == signature.r
     }

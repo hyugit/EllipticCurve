@@ -30,6 +30,7 @@
 		636F62782004323900519393 /* EllipticCurveOverFiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315FCF3200418FA00707738 /* EllipticCurveOverFiniteField.swift */; };
 		636F62792004323A00519393 /* EllipticCurveOverFiniteField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6315FCF3200418FA00707738 /* EllipticCurveOverFiniteField.swift */; };
 		636F627B2004623500519393 /* EllipticCurveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F627A2004623500519393 /* EllipticCurveTests.swift */; };
+		637E764D201019BD00BC1C4D /* ECDSATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E764C201019BD00BC1C4D /* ECDSATests.swift */; };
 		6399645120030496007231D9 /* EllipticCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636CD5EB200289E20018354F /* EllipticCurve.swift */; };
 		63996452200304A8007231D9 /* UInt256.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63AB7FC71FFEB7DD002C2F4F /* UInt256.framework */; };
 		639964632003070C007231D9 /* FiniteFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636CD5F32002C04D0018354F /* FiniteFieldTests.swift */; };
@@ -100,6 +101,7 @@
 		636CD5EB200289E20018354F /* EllipticCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticCurve.swift; sourceTree = "<group>"; };
 		636CD5F32002C04D0018354F /* FiniteFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiniteFieldTests.swift; sourceTree = "<group>"; };
 		636F627A2004623500519393 /* EllipticCurveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticCurveTests.swift; sourceTree = "<group>"; };
+		637E764C201019BD00BC1C4D /* ECDSATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDSATests.swift; sourceTree = "<group>"; };
 		6399644820030486007231D9 /* EllipticCurve.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EllipticCurve.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63996458200306ED007231D9 /* EllipticCurveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EllipticCurveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6399647320030F49007231D9 /* EllipticCurve.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EllipticCurve.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 				634517E52007F2B4002AEC9A /* AnotherECCTests.swift */,
 				63CFEDA020097DAB00450E63 /* ECOverFFTests.swift */,
 				63D3040F2009AFAA00D7B352 /* Secp256k1Tests.swift */,
+				637E764C201019BD00BC1C4D /* ECDSATests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 			files = (
 				636F627B2004623500519393 /* EllipticCurveTests.swift in Sources */,
 				639964632003070C007231D9 /* FiniteFieldTests.swift in Sources */,
+				637E764D201019BD00BC1C4D /* ECDSATests.swift in Sources */,
 				63AF49C32005D5B7002B70A3 /* SimpleECCTests.swift in Sources */,
 				634517E62007F2B4002AEC9A /* AnotherECCTests.swift in Sources */,
 				63D304102009AFAA00D7B352 /* Secp256k1Tests.swift in Sources */,
