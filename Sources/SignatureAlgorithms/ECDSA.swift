@@ -6,6 +6,7 @@ import UInt256
 public struct ECDSA<Point: EllipticCurveOverFiniteField> {
     public typealias Element = Point.Element
     public typealias Signature = (r: Element, s: Element)
+    public typealias Hashing = (_ msg: Data) -> Element
 
     private struct IsomorphicField: FiniteFieldInteger {
         public static var Characteristic: Element {
@@ -19,8 +20,9 @@ public struct ECDSA<Point: EllipticCurveOverFiniteField> {
         }
     }
 
-    public static func sign(hash: Element, withKey key: Element) -> Signature {
+    public static func sign(message: Data, signedBy key: Element, hashedBy closure: Hashing) -> Signature {
 
+        let hash: Element = closure(message)
         var r: IsomorphicField = 0
         var s: IsomorphicField = 0
         while s == 0 {
@@ -48,7 +50,7 @@ public struct ECDSA<Point: EllipticCurveOverFiniteField> {
         return (r: r.value, s: s.value)
     }
 
-    public static func verify(signature: Signature, ofHash h: Element, forPoint p: Point) -> Bool {
+    public static func verify(signature: Signature, withPoint p: Point, forMessage msg: Data, hashedBy closure: Hashing) -> Bool {
 
         guard !p.isInfinity else {
             return false
@@ -74,6 +76,7 @@ public struct ECDSA<Point: EllipticCurveOverFiniteField> {
             return false
         }
 
+        let h: Element = closure(msg)
         let r = IsomorphicField(withValue: signature.r)
         let s = IsomorphicField(withValue: signature.s)
         let z = IsomorphicField(withValue: h)

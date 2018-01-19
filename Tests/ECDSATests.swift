@@ -38,10 +38,12 @@ class ECDSATests: XCTestCase {
     }
 
     func testVerify() {
-        XCTAssertFalse(ECDSA<MyECFF>.verify(signature: (3, 4), ofHash: 1, forPoint: MyECFF.Infinity))
-        XCTAssertFalse(ECDSA<MyECFF>.verify(signature: (3, 4), ofHash: 1, forPoint: MyECFF(x: 0, y: 2)))
-        XCTAssertFalse(ECDSA<MyECFF>.verify(signature: (0, 1), ofHash: 1, forPoint: MyECFF(x: 6, y: 1)))
-        XCTAssertFalse(ECDSA<MyECFF>.verify(signature: (1, 0), ofHash: 1, forPoint: MyECFF(x: 6, y: 1)))
+        let d = Data()
+        func f(m: Data) -> UInt8 { return 1 }
+        XCTAssertFalse(ECDSA<MyECFF>.verify(signature: (3, 4), withPoint: MyECFF.Infinity, forMessage: d, hashedBy: f))
+        XCTAssertFalse(ECDSA<MyECFF>.verify(signature: (3, 4), withPoint: MyECFF(x: 0, y: 2), forMessage: d, hashedBy: f))
+        XCTAssertFalse(ECDSA<MyECFF>.verify(signature: (0, 1), withPoint: MyECFF(x: 6, y: 1), forMessage: d, hashedBy: f))
+        XCTAssertFalse(ECDSA<MyECFF>.verify(signature: (1, 0), withPoint: MyECFF(x: 6, y: 1), forMessage: d, hashedBy: f))
     }
 
     func testSignAndVerify() {
@@ -49,11 +51,12 @@ class ECDSATests: XCTestCase {
         // this is due to the fact that this field has very limited
         // choices of parameters
         for (h, k) in [(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (2, 1), (2, 2), (2, 4), (2, 5)] {
-            let hash = UInt8(truncatingIfNeeded: h)
+            let data = Data()
+            func f(m: Data) -> UInt8 { return UInt8(h) }
             let key = UInt8(truncatingIfNeeded: k)
-            let signature = ECDSA<MyECFF>.sign(hash: hash, withKey: key)
+            let signature = ECDSA<MyECFF>.sign(message: data, signedBy: key, hashedBy: f)
             let address = key * MyECFF.Generator
-            let verified = ECDSA<MyECFF>.verify(signature: signature, ofHash: hash, forPoint: address)
+            let verified = ECDSA<MyECFF>.verify(signature: signature, withPoint: address, forMessage: data, hashedBy: f)
             XCTAssertTrue(verified)
             sleep(1)
         }
