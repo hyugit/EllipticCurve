@@ -145,12 +145,13 @@ extension FiniteFieldInteger {
 
         var result = Self(withValue: 1)
         for (index, val) in trail.enumerated().reversed() {
-            if (exponent >> index) & 0b1 == 1 {
+            let check = Element(0b1) << index
+            if exponent & check == check {
                 result = result * val
-                exponent -= 0b1 << index
+                exponent = exponent - check
             }
         }
-        
+
         return result
     }
     
