@@ -162,12 +162,33 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		637F6391201172B500F6514C /* SignatureAlgorithms */ = {
+			isa = PBXGroup;
+			children = (
+				63150433200F2C2600DA2717 /* ECDSA.swift */,
+			);
+			path = SignatureAlgorithms;
+			sourceTree = "<group>";
+		};
 		639964872003139D007231D9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				639964822003102C007231D9 /* UInt256.framework.dSYM */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		63A0151C201152B100CB63EA /* CommonCurves */ = {
+			isa = PBXGroup;
+			children = (
+				6305D13B200A549C00235A53 /* Secp192k1.swift */,
+				6305D13E200A55BE00235A53 /* Secp192r1.swift */,
+				6305D141200A56E700235A53 /* Secp224k1.swift */,
+				6305D144200A583F00235A53 /* Secp224r1.swift */,
+				634517E920081528002AEC9A /* Secp256k1.swift */,
+				63C5C78C200A480F005AC4FE /* Secp256r1.swift */,
+			);
+			path = CommonCurves;
 			sourceTree = "<group>";
 		};
 		63AB7FC61FFEB7DD002C2F4F /* Frameworks */ = {
@@ -208,12 +229,8 @@
 				63BA9CE420071179006F86FE /* Info.plist */,
 				63F76F60200BEAF800361F88 /* FiniteField */,
 				63F76F61200BEB0E00361F88 /* EllipticCurve */,
-				6305D13B200A549C00235A53 /* Secp192k1.swift */,
-				6305D13E200A55BE00235A53 /* Secp192r1.swift */,
-				6305D141200A56E700235A53 /* Secp224k1.swift */,
-				6305D144200A583F00235A53 /* Secp224r1.swift */,
-				634517E920081528002AEC9A /* Secp256k1.swift */,
-				63C5C78C200A480F005AC4FE /* Secp256r1.swift */,
+				63A0151C201152B100CB63EA /* CommonCurves */,
+				637F6391201172B500F6514C /* SignatureAlgorithms */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -236,7 +253,6 @@
 				6315FCF02004036600707738 /* EllipticCurve+Default.swift */,
 				6315FCF3200418FA00707738 /* EllipticCurveOverFiniteField.swift */,
 				63CFED9D20097D2400450E63 /* EllipticCurveOverFiniteField+Default.swift */,
-				63150433200F2C2600DA2717 /* ECDSA.swift */,
 			);
 			path = EllipticCurve;
 			sourceTree = "<group>";
