@@ -26,6 +26,8 @@ class Secp256k1Tests: XCTestCase {
         XCTAssertEqual(Secp256k1(withCoordinates: (x, y)), point)
     }
 
+/*  the following tests take too long to run, improvement on performance is necessary
+
     func testPubPoint2() {
         let privkey = UInt256(1485)
         let x = UInt256([0xc982196a7466fbbb, 0xb0e27a940b6af926, 0xc1a74d5ad07128c8, 0x2824a11b5398afda])
@@ -33,8 +35,6 @@ class Secp256k1Tests: XCTestCase {
         let point = privkey * Secp256k1.Generator
         XCTAssertEqual(Secp256k1(withCoordinates: (x, y)), point)
     }
-
-/*  the following tests take too long to run, improvement on performance is necessary
 
     func testPubPoint3() {
         let privkey = UInt256([0, 1, 0, 0])
@@ -66,11 +66,24 @@ class Secp256k1Tests: XCTestCase {
         func hashingFunc(m: Data) -> UInt256 {
             return z
         }
+
         let result = ECDSA<Secp256k1>.verify(signature: (r, s), withPoint: p, forMessage: Data(), hashedBy: hashingFunc)
         XCTAssertTrue(result)
     }
 
 */
+
+    func testSigningSimple() {
+        let privkey: UInt256 = 1
+        let point = privkey * Secp256k1.One
+        func hashFunc(m: Data) -> UInt256 {
+            return UInt256(1234567890)
+        }
+
+        let sig = ECDSA<Secp256k1>.sign(message: Data(), signedBy: privkey, hashedBy: hashFunc)
+        let ver = ECDSA<Secp256k1>.verify(signature: sig, withPoint: point, forMessage: Data(), hashedBy: hashFunc)
+        XCTAssertTrue(ver)
+    }
 
     func testEverythingElse() {
         XCTAssertNotNil(Secp256r1())

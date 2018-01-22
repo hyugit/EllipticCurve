@@ -127,29 +127,19 @@ extension FiniteFieldInteger {
     ///   - lhs: the base number
     ///   - rhs: the exponent
     /// - Returns: the result of the power
-    static func ^(lhs: Self, rhs: Self) -> Self {
+    public static func ^(lhs: Self, rhs: Self) -> Self {
         /// this is the actual useful exponent, because of
         /// fermat's little thereom: base^(p-1) % p == 1
         var exponent: Element = rhs.value % (Self.Characteristic - 1)
-
         var currentVal: Self = lhs
-        var trail: [Self] = []
-
-        /// construct a trail leading to the highest
-        /// non-zero bit of exponent
-        let bitLength = exponent.bitWidth - exponent.leadingZeroBitCount
-        for _ in 0..<bitLength {
-            trail.append(currentVal)
-            currentVal = currentVal * currentVal
-        }
 
         var result = Self(withValue: 1)
-        for (index, val) in trail.enumerated().reversed() {
-            let check = Element(0b1) << index
-            if exponent & check == check {
-                result = result * val
-                exponent = exponent - check
+        while exponent > 0 {
+            if exponent & 0b1 == 1 {
+                result = result * currentVal
             }
+            exponent = exponent >> 1
+            currentVal = currentVal * currentVal
         }
 
         return result
