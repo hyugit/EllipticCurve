@@ -10,6 +10,8 @@ class ECDSATests: XCTestCase {
 
     struct FFInt7: FiniteFieldInteger {
         static var Characteristic = P
+        static var InverseCharacteristic: (high: UInt8, low: UInt8)? = nil
+
         var value: UInt8
 
         init() {

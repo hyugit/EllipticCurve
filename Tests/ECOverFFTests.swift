@@ -9,6 +9,7 @@ class ECOverFFTests: XCTestCase {
 
     struct FFInt223: FiniteFieldInteger {
         static var Characteristic: UInt8 = P
+        static var InverseCharacteristic: (high: UInt8, low: UInt8)? = nil
         var value: UInt8
 
         init() {
