@@ -9,8 +9,14 @@ public struct ECDSA<Point: EllipticCurveOverFiniteField> {
     public typealias Hashing = (_ msg: Data) -> Element
 
     private struct IsomorphicField: FiniteFieldInteger {
+
         public static var Characteristic: Element {
             return Point.Order
+        }
+        public static var InverseCharacteristic: (high: Element, low: Element)? {
+            get {
+                return Point.InverseOrder
+            }
         }
 
         public var value: Element
