@@ -24,6 +24,18 @@ extension EllipticCurveOverFiniteField {
         }
     }
 
+    public static var InverseCharacteristic: (high: Element, low: Element)? {
+        get {
+            return Self.Coordinate.InverseCharacteristic
+        }
+    }
+
+    public static var InverseOrder: (high: Element, low: Element)? {
+        get {
+            return nil
+        }
+    }
+
     public init(withCoordinates coord: (x: Element, y: Element)) {
         self.init(x: Coordinate(withValue: coord.x), y: Coordinate(withValue: coord.y))
     }

@@ -1,6 +1,7 @@
 //
 
 import Foundation
+import UInt256
 
 /// maybe should be extension for FiniteFieldIntegers,
 /// well... at least those arithmetics are for integers specifically
@@ -12,6 +13,12 @@ extension FiniteFieldInteger {
     public static var Order: Element {
         get {
             return Self.Characteristic
+        }
+    }
+
+    public static var InverseOrder: (high: Element, low: Element)? {
+        get {
+            return nil
         }
     }
 
@@ -91,8 +98,19 @@ extension FiniteFieldInteger {
 
     public static func *(lhs: Self, rhs: Self) -> Self {
         let (high, low) = lhs.value.multipliedFullWidth(by: rhs.value)
-        let (_, remain) = Self.Characteristic.dividingFullWidth((high: high, low: low))
-        return Self(withValue: remain)
+        guard Self.InverseCharacteristic != nil else {
+            let (_, remain) = Self.Characteristic.dividingFullWidth((high: high, low: low))
+            return Self(withValue: remain)
+        }
+
+        let inv = Self.InverseCharacteristic!
+        let ch = Self.Characteristic as! UInt256
+        let (_, remain) = ch.dividingFullWidth(
+            (high: high as! UInt256, low: low as! UInt256),
+            withPrecomputedInverse: (inv.high as! UInt256, inv.low as! UInt256)
+        )
+        let r = remain as! Element
+        return Self(withValue: r)
     }
 
     public static func *=(lhs: inout Self, rhs: Self) {
@@ -127,7 +145,7 @@ extension FiniteFieldInteger {
     ///   - lhs: the base number
     ///   - rhs: the exponent
     /// - Returns: the result of the power
-    public static func ^(lhs: Self, rhs: Self) -> Self {
+    static func ^(lhs: Self, rhs: Self) -> Self {
         /// this is the actual useful exponent, because of
         /// fermat's little thereom: base^(p-1) % p == 1
         var exponent: Element = rhs.value % (Self.Characteristic - 1)
@@ -148,4 +166,12 @@ extension FiniteFieldInteger {
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.value == rhs.value
     }
+
+//    static func fullWidthModularDivisionByCharacteristic(_ dividend: (high: Element, low: Element.Magnitude)) -> (quotient: Element, remainder: Element) {
+//        let inv = Self.InverseCharacteristic!
+//        let q0 = inv.low.multipliedFullWidth(by: dividend.high)
+//        let q1 = dividend.high // inv.high == 1, therefore inv.high * dividend.high == dividend.high
+//        let q = q0.high + q1
+//        return (Element(), Element())
+//    }
 }
