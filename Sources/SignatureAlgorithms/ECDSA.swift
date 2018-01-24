@@ -12,6 +12,9 @@ public struct ECDSA<Point: EllipticCurveOverFiniteField> {
         public static var Characteristic: Element {
             return Point.Order
         }
+        public static var InverseCharacteristic: (high: Element, low: Element)? {
+            return Point.InverseOrder
+        }
 
         public var value: Element
 

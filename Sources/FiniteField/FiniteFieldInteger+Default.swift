@@ -1,6 +1,7 @@
 //
 
 import Foundation
+import UInt256
 
 /// maybe should be extension for FiniteFieldIntegers,
 /// well... at least those arithmetics are for integers specifically
@@ -12,6 +13,18 @@ extension FiniteFieldInteger {
     public static var Order: Element {
         get {
             return Self.Characteristic
+        }
+    }
+
+    public static var InverseCharacteristic: (high: Element, low: Element)? {
+        get {
+            return nil
+        }
+    }
+
+    public static var InverseOrder: (high: Element, low: Element)? {
+        get {
+            return nil
         }
     }
 
@@ -91,8 +104,18 @@ extension FiniteFieldInteger {
 
     public static func *(lhs: Self, rhs: Self) -> Self {
         let (high, low) = lhs.value.multipliedFullWidth(by: rhs.value)
-        let (_, remain) = Self.Characteristic.dividingFullWidth((high: high, low: low))
-        return Self(withValue: remain)
+        guard Self.InverseCharacteristic != nil else {
+            let (_, remain) = Self.Characteristic.dividingFullWidth((high: high, low: low))
+            return Self(withValue: remain)
+        }
+
+        // TODO: need to find a more elegant solution than downcasting
+        let (hi, lo) = Self.InverseCharacteristic!
+        let (_, remain) = (Self.Characteristic as! UInt256).dividingFullWidth(
+            (high: high as! UInt256, low: low as! UInt256),
+            withPrecomputedInverse: (hi as! UInt256, lo as! UInt256)
+        )
+        return Self(withValue: remain as! Element)
     }
 
     public static func *=(lhs: inout Self, rhs: Self) {
@@ -127,7 +150,7 @@ extension FiniteFieldInteger {
     ///   - lhs: the base number
     ///   - rhs: the exponent
     /// - Returns: the result of the power
-    public static func ^(lhs: Self, rhs: Self) -> Self {
+    static func ^(lhs: Self, rhs: Self) -> Self {
         /// this is the actual useful exponent, because of
         /// fermat's little thereom: base^(p-1) % p == 1
         var exponent: Element = rhs.value % (Self.Characteristic - 1)
