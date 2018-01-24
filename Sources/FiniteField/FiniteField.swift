@@ -11,5 +11,9 @@ public protocol FiniteField: CustomStringConvertible {
     static var Zero: Self { get }
     static var One: Self { get }
 
+    // these variabled could be precomputed and used to speed up the operations
+    static var InverseCharacteristic: (high: Element, low: Element)? { get }
+    static var InverseOrder: (high: Element, low: Element)? { get }
+
     init()
 }
