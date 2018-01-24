@@ -24,7 +24,6 @@ public struct Secp192r1: EllipticCurveOverFiniteField {
 
     public struct FFInt: FiniteFieldInteger {
         public static var Characteristic: UInt256 = Parameters.P
-        public static var InverseCharacteristic: (high: UInt256, low: UInt256)? = nil
         public var value: UInt256
 
         public init() {
