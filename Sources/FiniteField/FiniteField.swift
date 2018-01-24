@@ -1,7 +1,7 @@
 //
 
 import Foundation
-import UInt256
+@_exported import UInt256
 
 public protocol FiniteField: CustomStringConvertible {
     associatedtype Element: UnsignedInteger, FixedWidthInteger
