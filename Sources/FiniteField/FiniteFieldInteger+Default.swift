@@ -16,6 +16,12 @@ extension FiniteFieldInteger {
         }
     }
 
+    public static var InverseCharacteristic: (high: Element, low: Element)? {
+        get {
+            return nil
+        }
+    }
+
     public static var InverseOrder: (high: Element, low: Element)? {
         get {
             return nil
@@ -103,14 +109,12 @@ extension FiniteFieldInteger {
             return Self(withValue: remain)
         }
 
-        let inv = Self.InverseCharacteristic!
-        let ch = Self.Characteristic as! UInt256
-        let (_, remain) = ch.dividingFullWidth(
+        let (hi, lo) = Self.InverseCharacteristic!
+        let (_, remain) = (Self.Characteristic as! UInt256).dividingFullWidth(
             (high: high as! UInt256, low: low as! UInt256),
-            withPrecomputedInverse: (inv.high as! UInt256, inv.low as! UInt256)
+            withPrecomputedInverse: (hi as! UInt256, lo as! UInt256)
         )
-        let r = remain as! Element
-        return Self(withValue: r)
+        return Self(withValue: remain as! Element)
     }
 
     public static func *=(lhs: inout Self, rhs: Self) {
@@ -166,12 +170,4 @@ extension FiniteFieldInteger {
     public static func ==(lhs: Self, rhs: Self) -> Bool {
         return lhs.value == rhs.value
     }
-
-//    static func fullWidthModularDivisionByCharacteristic(_ dividend: (high: Element, low: Element.Magnitude)) -> (quotient: Element, remainder: Element) {
-//        let inv = Self.InverseCharacteristic!
-//        let q0 = inv.low.multipliedFullWidth(by: dividend.high)
-//        let q1 = dividend.high // inv.high == 1, therefore inv.high * dividend.high == dividend.high
-//        let q = q0.high + q1
-//        return (Element(), Element())
-//    }
 }

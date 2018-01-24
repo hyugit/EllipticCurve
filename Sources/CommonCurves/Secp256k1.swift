@@ -30,11 +30,7 @@ fileprivate let Parameters = (
 public struct Secp256k1: EllipticCurveOverFiniteField {
     public struct FFInt: FiniteFieldInteger {
         public static var Characteristic: UInt256 = Parameters.P
-        public static var InverseCharacteristic: (high: UInt256, low: UInt256)? {
-            get {
-                return Parameters.InverseP
-            }
-        }
+        public static var InverseCharacteristic: (high: UInt256, low: UInt256)? = Parameters.InverseP
         public var value: UInt256
 
         public init() {
