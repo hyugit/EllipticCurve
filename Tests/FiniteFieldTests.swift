@@ -11,7 +11,6 @@ class FiniteFieldTests: XCTestCase {
 
     struct FFInt: FiniteFieldInteger {
         static var Characteristic = p
-        static var InverseCharacteristic: (high: UInt8, low: UInt8)? = nil
 
         var value: UInt8
 
