@@ -109,6 +109,7 @@ extension FiniteFieldInteger {
             return Self(withValue: remain)
         }
 
+        // TODO: need to find a more elegant solution than downcasting
         let (hi, lo) = Self.InverseCharacteristic!
         let (_, remain) = (Self.Characteristic as! UInt256).dividingFullWidth(
             (high: high as! UInt256, low: low as! UInt256),
