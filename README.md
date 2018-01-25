@@ -7,4 +7,51 @@
 
 
 An elliptic curve library written in Swift 4
- 
+
+# Features
+
+- [x] ECDSA
+- [x] secp256k1
+- [x] provide your own hashing functions
+- [x] FiniteFieldInteger protocol to create your own finite field integers
+- [x] EllipticCurve protocol to create your own elliptic curves
+- [x] generic signing and signature verifying
+- [x] secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, secp256r1
+
+#### CREATE YOUR OWN ELLIPTIC CURVES! :smiley:
+
+This Library provides the necessary scaffoldings for you 
+to easily create elliptic curves. 
+
+The library includes several SEC-2 recommended curves,
+the foremost of among which is the `secp256k1`, the most
+popular curve at the moment. On top of the curves, a generic 
+ECDSA struct is included for signing and verifying.
+
+# Library architecture 
+
+The top level protocol for creating elliptic curve 
+cryptography is **EllipticCurveOverFiniteField**. It is constructed from two basic protocols: **FiniteFieldInteger**
+and **EllipticCurve**, the former of which is based on **FiniteField**. The diagram of protocol inheritance is as follows:
+
+~~~~
+ +--------------------------+                                        
+ |                          |                                        
+ |        FiniteField       ------+                                  
+ |                          |     |                                  
+ +-------------|------------+     |                                  
+               |                  |                                  
+               |                  |                                  
+ +-------------v------------+     |     +---------------------------+
+ |                          |     |     |                           |
+ |    FiniteFieldInteger    |     |     |       EllipticCurve       |
+ |                          |     |     |                           |
+ +-------------|------------+     |     +-------------|-------------+
+               |                  |                   |              
+               |                  |                   |              
+ As Coordinates|  +---------------v--------------+    |              
+               |  |                              |    |              
+               +--- EllipticCurveOverFiniteField <----+              
+                  |                              |                   
+                  +------------------------------+                   
+~~~~
