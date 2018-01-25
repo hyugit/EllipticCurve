@@ -8,7 +8,7 @@
 
 An elliptic curve library written in Swift 4
 
-# Features
+## Features
 
 - [x] ECDSA
 - [x] secp256k1
@@ -28,7 +28,7 @@ the foremost of among which is the `secp256k1`, the most
 popular curve at the moment. On top of the curves, a generic 
 ECDSA struct is included for signing and verifying.
 
-# Protocol oriented architecture 
+## Protocol oriented architecture 
 
 The top level protocol for creating elliptic curve 
 cryptography is **EllipticCurveOverFiniteField**. It is constructed from two basic protocols: **FiniteFieldInteger**
