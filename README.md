@@ -35,23 +35,30 @@ cryptography is **EllipticCurveOverFiniteField**. It is constructed from two bas
 and **EllipticCurve**, the former of which is based on **FiniteField**. The diagram of protocol inheritance is as follows:
 
 ~~~~
- +--------------------------+                                        
- |                          |                                        
- |        FiniteField       ------+                                  
- |                          |     |                                  
- +-------------|------------+     |                                  
-               |                  |                                  
-               |                  |                                  
- +-------------v------------+     |     +---------------------------+
- |                          |     |     |                           |
- |    FiniteFieldInteger    |     |     |       EllipticCurve       |
- |                          |     |     |                           |
- +-------------|------------+     |     +-------------|-------------+
-               |                  |                   |              
-               |                  |                   |              
- As Coordinates|  +---------------v--------------+    |              
-               |  |                              |    |              
-               +--- EllipticCurveOverFiniteField <----+              
-                  |                              |                   
-                  +------------------------------+                   
+ +--------------------------+                                       
+ |                          |                                       
+ |        FiniteField       ------+                                 
+ |                          |     |                                 
+ +-------------|------------+     |                                 
+               |                  |                                 
+               |                  |                                 
+ +-------------v------------+     |    +---------------------------+
+ |                          |     |    |                           |
+ |    FiniteFieldInteger    |     |    |        EllipticCurve      |
+ |                          |     |    |                           |
+ +-------------|------------+     |    +-------------|-------------+
+               |                  |                  |              
+               |                  |                  |              
+ As Coordinates|  +---------------v--------------+   |              
+               |  |                              |   |              
+               +--- EllipticCurveOverFiniteField <---+              
+                  |                              |                  
+                  +---------------|--------------+                  
+                                  |                                 
+                                  |                                 
+                  +---------------v--------------+                  
+                  |                              |                  
+                  |           ECDSA<T>           |                  
+                  |                              |                  
+                  +------------------------------+                                
 ~~~~
