@@ -35,12 +35,14 @@ cryptography is **EllipticCurveOverFiniteField**. It is constructed from two bas
 and **EllipticCurve**, the former of which is based on **FiniteField**. The diagram of protocol inheritance is as follows:
 
 ~~~~
+                                                                    
  +--------------------------+                                       
  |                          |                                       
- |        FiniteField       ------+                                 
+ |        FiniteField       |-----+                                 
  |                          |     |                                 
- +-------------|------------+     |                                 
+ +-------------|------------+     |Conformance                      
                |                  |                                 
+               |Conformance       |                                 
                |                  |                                 
  +-------------v------------+     |    +---------------------------+
  |                          |     |    |                           |
@@ -49,16 +51,17 @@ and **EllipticCurve**, the former of which is based on **FiniteField**. The diag
  +-------------|------------+     |    +-------------|-------------+
                |                  |                  |              
                |                  |                  |              
- As Coordinates|  +---------------v--------------+   |              
+ As Coordinates|  +------------------------------+   |Conformance   
                |  |                              |   |              
                +--- EllipticCurveOverFiniteField <---+              
                   |                              |                  
                   +---------------|--------------+                  
                                   |                                 
+                                  |As T                             
                                   |                                 
-                  +---------------v--------------+                  
+                  +---------------|--------------+                  
                   |                              |                  
                   |           ECDSA<T>           |                  
                   |                              |                  
-                  +------------------------------+                                
+                  +------------------------------+                                              
 ~~~~
