@@ -76,7 +76,7 @@ extension FiniteFieldInteger {
 
     public static func +(lhs: Self, rhs: Self) -> Self {
         var (value, overflow) = lhs.value.addingReportingOverflow(rhs.value)
-        
+
         if overflow || value >= Self.Characteristic {
             (value, overflow) = value.subtractingReportingOverflow(Self.Characteristic)
         }
@@ -90,11 +90,11 @@ extension FiniteFieldInteger {
 
     public static func -(lhs: Self, rhs: Self) -> Self {
         var (value, overflow) = lhs.value.subtractingReportingOverflow(rhs.value)
-        
+
         if overflow {
             (value, overflow) = value.addingReportingOverflow(Self.Characteristic)
         }
-        
+
         return Self(withValue: value)
     }
 
@@ -104,18 +104,9 @@ extension FiniteFieldInteger {
 
     public static func *(lhs: Self, rhs: Self) -> Self {
         let (high, low) = lhs.value.multipliedFullWidth(by: rhs.value)
-        guard Self.InverseCharacteristic != nil else {
-            let (_, remain) = Self.Characteristic.dividingFullWidth((high: high, low: low))
-            return Self(withValue: remain)
-        }
-
-        // TODO: need to find a more elegant solution than downcasting
-        let (hi, lo) = Self.InverseCharacteristic!
-        let (_, remain) = (Self.Characteristic as! UInt256).dividingFullWidth(
-            (high: high as! UInt256, low: low as! UInt256),
-            withPrecomputedInverse: (hi as! UInt256, lo as! UInt256)
-        )
-        return Self(withValue: remain as! Element)
+        let inv = Self.InverseCharacteristic ?? (0, 0)
+        let (_, remain) = Self.Characteristic.dividingFullWidth((high, low), withPrecomputedInverse: inv)
+        return Self(withValue: remain)
     }
 
     public static func *=(lhs: inout Self, rhs: Self) {
