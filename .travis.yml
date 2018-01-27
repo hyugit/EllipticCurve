@@ -3,9 +3,11 @@ osx_image: xcode9.2
 branches:
   only:
     - master
+cache: carthage
 before_install:
   - brew install carthage
 script:
   - carthage bootstrap
   - carthage build --no-skip-current
-  - xcodebuild -scheme "EllipticCurveTests" -destination "platform=iOS Simulator,name=iPhone 5s" test
+  - xcodebuild -workspace "EllipticCurve.xcworkspace" -scheme "EllipticCurveTests" -destination "platform=iOS Simulator,name=iPhone 5s" build-for-testing
+  - xcodebuild -workspace "EllipticCurve.xcworkspace" -scheme "EllipticCurveTests" -destination "platform=iOS Simulator,name=iPhone 5s" test-without-building
