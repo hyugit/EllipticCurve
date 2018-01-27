@@ -187,6 +187,14 @@ Currently, only carthage package installation is tested.
 - add this line to your Cartfile: `github "mryu87/EllipticCurve"`
 - run `carthage update` under your project directory
 
+### Swift Package Manager
+
+```
+dependencies: [
+    .package(url: "https://github.com/mryu87/EllipticCurve.git", from: "0.3.0")
+]
+```
+
 ## Communication
 
 If you have a bug report or a feature request, please open an issue here on GitHub. Any contribution is welcome. :smiley:
