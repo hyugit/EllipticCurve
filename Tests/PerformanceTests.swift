@@ -39,7 +39,7 @@ class PerformanceTests: XCTestCase {
             let _ = privkey * Secp256k1.Generator
         }
     }
-
+/*
     func testMultiplicationPerf32() {
         self.measure {
             let privkey = UInt256(1) << 32
@@ -53,7 +53,7 @@ class PerformanceTests: XCTestCase {
             let _ = privkey * Secp256k1.Generator
         }
     }
-
+ */
     // make sure the building process does not slow down UInt256
     func testUInt256Multiplication() {
         self.measure {
