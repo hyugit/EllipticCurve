@@ -87,15 +87,10 @@ class Secp256k1Tests: XCTestCase {
 
     func testEverythingElse() {
         XCTAssertNotNil(Secp256r1())
-        XCTAssertNotNil(Secp256r1.Generator)
         XCTAssertNotNil(Secp224k1())
-        XCTAssertNotNil(Secp224k1.Generator)
         XCTAssertNotNil(Secp224r1())
-        XCTAssertNotNil(Secp224r1.Generator)
         XCTAssertNotNil(Secp192k1())
-        XCTAssertNotNil(Secp192k1.Generator)
         XCTAssertNotNil(Secp192r1())
-        XCTAssertNotNil(Secp192r1.Generator)
     }
 }
 
