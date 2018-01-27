@@ -73,7 +73,7 @@ and **EllipticCurve**, the former of which is based on **FiniteField**. The diag
                   +------------------------------+                                              
 ~~~~
 
-#### FiniteField
+### FiniteField
 
 FiniteField is the base protocol. 
 It defines several basic properties like `Zero`,
@@ -81,7 +81,7 @@ It defines several basic properties like `Zero`,
 to be used directly, but you can use it to create
 finite fields.
 
-#### FiniteFieldInteger
+### FiniteFieldInteger
 
 FiniteFieldInteger defines the basic scaffolding
 and provides most of the default implementations
@@ -110,12 +110,13 @@ print(a + b)
 This will create a finite field integer of F_223,
 and then you can use the basic +, -, *, / on it.
 
-#### EllipticCurve
+### EllipticCurve
 
 EllipticCurve is also generic. You can create an
 elliptic curve on real domain like this:
 
-```apple js
+```swift
+
 struct MyECPoint: EllipticCurve {
     static var a: Double = -1
     static var b: Double = 1
@@ -133,12 +134,12 @@ print(p.description)
 
 ```
 
-#### EllipticCurveOverFiniteField
+### EllipticCurveOverFiniteField
 
 This is the top level protocol to use, if you want to
 create an ECC of your own:
 
-```apple js
+```swift
 
 let P: UInt8 = 223
 
