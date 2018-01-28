@@ -104,8 +104,12 @@ extension FiniteFieldInteger {
 
     public static func *(lhs: Self, rhs: Self) -> Self {
         let (high, low) = lhs.value.multipliedFullWidth(by: rhs.value)
-        let inv = Self.InverseCharacteristic ?? (0, 0)
-        let (_, remain) = Self.Characteristic.dividingFullWidth((high, low), withPrecomputedInverse: inv)
+        let remain: Element
+        if let inv = Self.InverseCharacteristic {
+            (_, remain) = Self.Characteristic.dividingFullWidth((high, low), withPrecomputedInverse: inv)
+        } else {
+            (_, remain) = Self.Characteristic.dividingFullWidth((high, low))
+        }
         return Self(withValue: remain)
     }
 
