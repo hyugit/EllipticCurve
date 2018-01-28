@@ -34,6 +34,10 @@ class ECDSATests: XCTestCase {
 
     func testInit() {
         let e = ECDSA<MyECFF>()
+        XCTAssertNil(FFInt7.InverseOrder)
+        XCTAssertNil(FFInt7.InverseCharacteristic)
+        XCTAssertNil(MyECFF.InverseOrder)
+        XCTAssertNil(MyECFF.InverseCharacteristic)
         XCTAssertNotNil(e)
     }
 
