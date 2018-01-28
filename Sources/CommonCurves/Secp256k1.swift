@@ -40,7 +40,7 @@ public struct Secp256k1: EllipticCurveOverFiniteField {
 
     public static var Generator = Secp256k1(withCoordinates: Parameters.G)
     public static var Order: UInt256 = Parameters.N
-    public static var InverseOrder: (UInt256, UInt256)? = Parameters.InverseN
+    public static var InverseOrder: (high: UInt256, low: UInt256)? = Parameters.InverseN
 
     public static var a = FFInt(Parameters.a)
     public static var b = FFInt(Parameters.b)
