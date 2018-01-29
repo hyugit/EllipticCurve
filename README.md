@@ -8,6 +8,8 @@
 
 An elliptic curve library written in Swift 4
 
+**Warning**: this library started as a learning process. It is not meant for production use. Please use [libsecp256k1](https://github.com/bitcoin-core/secp256k1) instead.
+
 ## Features
 
 - [x] ECDSA
@@ -38,8 +40,10 @@ elliptic curve of Double precision or Float80 precision. Please
 see to the playground for demonstrations. 
 
 The top level protocol for creating elliptic curve 
-cryptography is **EllipticCurveOverFiniteField**. It is constructed from two basic protocols: **FiniteFieldInteger**
-and **EllipticCurve**, the former of which is based on **FiniteField**. The diagram of protocol inheritance is as follows:
+cryptography is **EllipticCurveOverFiniteField**. It is constructed
+from two basic protocols: **FiniteFieldInteger** and **EllipticCurve**,
+the former of which is based on **FiniteField**. The diagram of
+protocol inheritance is as follows:
 
 ~~~~
                                                                     
