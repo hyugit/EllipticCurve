@@ -54,7 +54,9 @@ class Secp256k1Tests: XCTestCase {
         XCTAssertEqual(Secp256k1(withCoordinates: (x, y)), point)
     }
 
-    func testSigning() {
+ */
+
+    func testVerifying() {
         let x = Secp256k1.FFInt(UInt256([
             0x887387e452b8eacc, 0x4acfde10d9aaf7f6, 0xd9a0f975aabb10d0, 0x06e4da568744d06c
         ]))
@@ -72,8 +74,6 @@ class Secp256k1Tests: XCTestCase {
         let result = ECDSA<Secp256k1>.verify(signature: (r, s), withPoint: p, forMessage: Data(), hashedBy: hashingFunc)
         XCTAssertTrue(result)
     }
-
-*/
 
     func testSigningSimple() {
         let privkey: UInt256 = 1

@@ -21,6 +21,17 @@
 		6305D146200A583F00235A53 /* Secp224r1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6305D144200A583F00235A53 /* Secp224r1.swift */; };
 		63150434200F2C2600DA2717 /* ECDSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63150433200F2C2600DA2717 /* ECDSA.swift */; };
 		63150435200F2C2600DA2717 /* ECDSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63150433200F2C2600DA2717 /* ECDSA.swift */; };
+		631F15272020DA8300F79EB5 /* EllipticCurve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6399647320030F49007231D9 /* EllipticCurve.framework */; };
+		631F152D2020DAB800F79EB5 /* Secp256k1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D3040F2009AFAA00D7B352 /* Secp256k1Tests.swift */; };
+		631F152E2020DB6800F79EB5 /* UInt256.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6399647F20030FC6007231D9 /* UInt256.framework */; };
+		631F15312020DB7F00F79EB5 /* UInt256.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6399647F20030FC6007231D9 /* UInt256.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		631F15322021032F00F79EB5 /* FiniteFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636CD5F32002C04D0018354F /* FiniteFieldTests.swift */; };
+		631F15332021032F00F79EB5 /* EllipticCurveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636F627A2004623500519393 /* EllipticCurveTests.swift */; };
+		631F15342021032F00F79EB5 /* SimpleECCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF49C22005D5B7002B70A3 /* SimpleECCTests.swift */; };
+		631F15352021032F00F79EB5 /* AnotherECCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634517E52007F2B4002AEC9A /* AnotherECCTests.swift */; };
+		631F15362021032F00F79EB5 /* ECOverFFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFEDA020097DAB00450E63 /* ECOverFFTests.swift */; };
+		631F15372021032F00F79EB5 /* ECDSATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637E764C201019BD00BC1C4D /* ECDSATests.swift */; };
+		631F15382021032F00F79EB5 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C601E2012553E0081C4E5 /* PerformanceTests.swift */; };
 		633C6021201258DF0081C4E5 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633C601E2012553E0081C4E5 /* PerformanceTests.swift */; };
 		634517E62007F2B4002AEC9A /* AnotherECCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634517E52007F2B4002AEC9A /* AnotherECCTests.swift */; };
 		635B907B2003C35000E663A3 /* FiniteFieldInteger+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B90792003C35000E663A3 /* FiniteFieldInteger+Default.swift */; };
@@ -54,6 +65,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		631F15282020DA8300F79EB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 63DD8C2B1FFD925000BAB4B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6399647220030F49007231D9;
+			remoteInfo = "EllipticCurve macOS";
+		};
 		6399648920031436007231D9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 63DD8C2B1FFD925000BAB4B2 /* Project object */;
@@ -64,6 +82,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		631F152F2020DB6C00F79EB5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				631F15312020DB7F00F79EB5 /* UInt256.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6399648120030FF5007231D9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -95,6 +123,7 @@
 		63150433200F2C2600DA2717 /* ECDSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECDSA.swift; sourceTree = "<group>"; };
 		6315FCF02004036600707738 /* EllipticCurve+Default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EllipticCurve+Default.swift"; sourceTree = "<group>"; };
 		6315FCF3200418FA00707738 /* EllipticCurveOverFiniteField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticCurveOverFiniteField.swift; sourceTree = "<group>"; };
+		631F15222020DA8300F79EB5 /* EllipticCurveTests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EllipticCurveTests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		633C601E2012553E0081C4E5 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		634517E52007F2B4002AEC9A /* AnotherECCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherECCTests.swift; sourceTree = "<group>"; };
 		634517E920081528002AEC9A /* Secp256k1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secp256k1.swift; sourceTree = "<group>"; };
@@ -122,6 +151,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		631F151F2020DA8300F79EB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				631F152E2020DB6800F79EB5 /* UInt256.framework in Frameworks */,
+				631F15272020DA8300F79EB5 /* EllipticCurve.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6399644420030486007231D9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -221,6 +259,7 @@
 				6399644820030486007231D9 /* EllipticCurve.framework */,
 				63996458200306ED007231D9 /* EllipticCurveTests.xctest */,
 				6399647320030F49007231D9 /* EllipticCurve.framework */,
+				631F15222020DA8300F79EB5 /* EllipticCurveTests macOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -273,6 +312,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		631F15212020DA8300F79EB5 /* EllipticCurveTests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 631F152C2020DA8300F79EB5 /* Build configuration list for PBXNativeTarget "EllipticCurveTests macOS" */;
+			buildPhases = (
+				631F151E2020DA8300F79EB5 /* Sources */,
+				631F151F2020DA8300F79EB5 /* Frameworks */,
+				631F15202020DA8300F79EB5 /* Resources */,
+				631F152F2020DB6C00F79EB5 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				631F15292020DA8300F79EB5 /* PBXTargetDependency */,
+			);
+			name = "EllipticCurveTests macOS";
+			productName = "EllipticCurveTests macOS";
+			productReference = 631F15222020DA8300F79EB5 /* EllipticCurveTests macOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		6399644720030486007231D9 /* EllipticCurve iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6399644D20030486007231D9 /* Build configuration list for PBXNativeTarget "EllipticCurve iOS" */;
@@ -339,6 +397,10 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = mryu87;
 				TargetAttributes = {
+					631F15212020DA8300F79EB5 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					6399644720030486007231D9 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -368,11 +430,19 @@
 				6399644720030486007231D9 /* EllipticCurve iOS */,
 				6399647220030F49007231D9 /* EllipticCurve macOS */,
 				63996457200306ED007231D9 /* EllipticCurveTests */,
+				631F15212020DA8300F79EB5 /* EllipticCurveTests macOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		631F15202020DA8300F79EB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6399644620030486007231D9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,6 +485,21 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		631F151E2020DA8300F79EB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				631F15332021032F00F79EB5 /* EllipticCurveTests.swift in Sources */,
+				631F152D2020DAB800F79EB5 /* Secp256k1Tests.swift in Sources */,
+				631F15372021032F00F79EB5 /* ECDSATests.swift in Sources */,
+				631F15322021032F00F79EB5 /* FiniteFieldTests.swift in Sources */,
+				631F15352021032F00F79EB5 /* AnotherECCTests.swift in Sources */,
+				631F15342021032F00F79EB5 /* SimpleECCTests.swift in Sources */,
+				631F15382021032F00F79EB5 /* PerformanceTests.swift in Sources */,
+				631F15362021032F00F79EB5 /* ECOverFFTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6399644320030486007231D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -477,6 +562,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		631F15292020DA8300F79EB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6399647220030F49007231D9 /* EllipticCurve macOS */;
+			targetProxy = 631F15282020DA8300F79EB5 /* PBXContainerItemProxy */;
+		};
 		6399648A20031436007231D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6399644720030486007231D9 /* EllipticCurve iOS */;
@@ -485,6 +575,44 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		631F152A2020DA8300F79EB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = Sources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mryu87.EllipticCurveTests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		631F152B2020DA8300F79EB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = Sources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mryu87.EllipticCurveTests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		6399644E20030486007231D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -741,6 +869,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		631F152C2020DA8300F79EB5 /* Build configuration list for PBXNativeTarget "EllipticCurveTests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				631F152A2020DA8300F79EB5 /* Debug */,
+				631F152B2020DA8300F79EB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6399644D20030486007231D9 /* Build configuration list for PBXNativeTarget "EllipticCurve iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
