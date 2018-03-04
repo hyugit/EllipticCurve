@@ -1,8 +1,8 @@
 # EllipticCurve
 
-[![Build Status](https://travis-ci.org/mryu87/EllipticCurve.svg?branch=master)](https://travis-ci.org/mryu87/EllipticCurve)
+[![Build Status](https://travis-ci.org/hyu2018/EllipticCurve.svg?branch=master)](https://travis-ci.org/hyu2018/EllipticCurve)
 [![Language](https://img.shields.io/badge/swift-4-orange.svg)](https://swift.org)
-[![Platform](https://img.shields.io/badge/platform-ios%20|%20macos-lightgrey.svg)](https://github.com/mryu87/EllipticCurve)
+[![Platform](https://img.shields.io/badge/platform-ios%20|%20macos-lightgrey.svg)](https://github.com/hyu2018/EllipticCurve)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-green.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 
@@ -188,14 +188,14 @@ struct MyECFF: EllipticCurveOverFiniteField {
 Currently, only carthage package installation is tested.
 
 - install Carthage: `brew install carthage`
-- add this line to your Cartfile: `github "mryu87/EllipticCurve"`
+- add this line to your Cartfile: `github "hyu2018/EllipticCurve"`
 - run `carthage update` under your project directory
 
 ### Swift Package Manager
 
 ```
 dependencies: [
-    .package(url: "https://github.com/mryu87/EllipticCurve.git", from: "0.3.0")
+    .package(url: "https://github.com/hyu2018/EllipticCurve.git", from: "0.3.0")
 ]
 ```
 
