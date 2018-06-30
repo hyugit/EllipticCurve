@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'EllipticCurve'
-  s.version      = '0.3.2'
+  s.version      = '0.3.3'
   s.summary      = 'ECDSA in pure Swift'
 
   s.description  = <<-DESC
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.homepage     = 'https://github.com/hyugit/EllipticCurve.git'
   s.license      = 'MIT'
   s.authors      = { 'Huang Yu' => '13056774+mryu87@users.noreply.github.com', 'Alexander Cyon' => 'alex.cyon@gmail.com' }
-  s.source = { :git => 'https://github.com/hyugit/EllipticCurve.git', :tag => s.version }
+  s.source = { :git => 'https://github.com/Sajjon/EllipticCurve.git', :branch => 'cocoapods' }
   s.source_files = 'Sources/**/*.swift'
   s.swift_version = '4.1.2'
   s.dependency 'UInt256', '~> 0.2.2'
