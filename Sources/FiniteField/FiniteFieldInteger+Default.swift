@@ -7,8 +7,6 @@ import UInt256
 /// well... at least those arithmetics are for integers specifically
 /// and do not apply to points or other element types
 extension FiniteFieldInteger {
-    public typealias IntegerLiteralType = Int
-    public typealias Magnitude = Self.Type
 
     public static var Order: Element {
         get {

@@ -4,8 +4,6 @@ import Foundation
 
 extension EllipticCurveOverFiniteField {
 
-    public typealias Element = Self.Coordinate.Element
-
     public static var Zero: Self {
         get {
             return Self.Infinity
